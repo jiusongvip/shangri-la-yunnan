@@ -1,0 +1,65 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+---
+
+<DetailLayout
+  title="Matsutake Mushrooms"
+  description="Matsutake Mushrooms, Shangri-La Yunnan: prized wild Himalayan mushrooms. Peak season, local recipes, where to eat and buy, and foraging culture."
+  category="Food"
+  image="matsutake-mushrooms.webp"
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Matsutake Mushrooms: Shangri-La's Forest Gold",
+    "description": "Wild matsutake mushrooms from Shangri-La Yunnan, prized in Japan and globally. Learn about peak season, how they are cooked, where to eat, buy, and export market prices.",
+    "author": {"@type": "Organization", "name": "Shangri-La Guide"}
+  }}
+>
+  <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Matsutake Mushrooms (Song Rong)</h1>
+  <p class="mt-3 text-lg leading-relaxed text-slate-500">Shangri-La's forest gold. Prized around the world for their earthy, cinnamon-like aroma. From July to September, the pine forests around Shangri-La yield some of the finest matsutake on the planet.</p>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">What Are Matsutake Mushrooms?</h2>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">Matsutake (u677eu8338, song rong) is a wild mycorrhizal mushroom that grows in symbiotic relationship with pine tree roots, mostly in East Asia. It cannot be cultivated commercially &mdash; every matsutake mushroom you eat was hand-foraged from a forest. The Shangri-La region, with its pristine high-altitude pine and oak forests at 3,000&ndash;3,800 meters, produces some of the most aromatic and sought-after matsutake in the world.</p>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">The mushroom's aroma is its defining feature: a complex, earthy scent with notes of cinnamon, pine, and a distinct spiciness unique to matsutake. The texture is firm and meaty when cooked, never slimy. In Japan, where top-grade matsutake can sell for <strong>$200&ndash;1,000 per kilogram</strong>, the mushroom is a symbol of autumn, luxury, and the fleeting beauty of seasonal foods. The aroma is so valued that matsutake is often cooked simply &mdash; grilled, steamed, or in clear broth &mdash; to avoid masking its natural fragrance.</p>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">In Shangri-La, matsutake is both a cultural touchstone and an economic lifeline. During the July&ndash;September harvest season, entire villages empty out at dawn as families head into the forests with baskets and digging sticks. A single large specimen can earn a forager 200&ndash;500 RMB. The mushrooms are bought by middlemen in village markets, trucked to Kunming, and flown the same day to Tokyo, Seoul, and Shanghai.</p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Matsutake Season in Shangri-La</h2>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">The matsutake season runs from roughly <strong>mid-July to mid-September</strong>, though exact timing depends on rainfall and temperature. The peak is August, when the summer monsoon rains trigger the most abundant fruiting. Early-season (July) mushrooms command the highest export prices. Late-season (September) mushrooms are often larger and more deeply aromatic.</p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">How Matsutake Is Cooked in Shangri-La</h2>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 p-4"><p class="text-sm font-bold text-slate-900">Grilled with Butter</p><p class="mt-2 text-sm leading-relaxed text-slate-600">The simplest and best preparation. Sliced matsutake grilled over charcoal with a dab of butter and a sprinkle of salt. The heat releases the cinnamon-pine aroma. 40&ndash;60 RMB per plate at restaurants during season.</p></div>
+      <div class="rounded-xl border border-slate-200 p-4"><p class="text-sm font-bold text-slate-900">In Yak Hotpot</p><p class="mt-2 text-sm leading-relaxed text-slate-600">Added at the end to the simmering broth, matsutake infuses the entire hotpot with its fragrance. Thin slices cook in 30&ndash;45 seconds. Most hotpot restaurants offer matsutake as a premium add-on during season.</p></div>
+      <div class="rounded-xl border border-slate-200 p-4"><p class="text-sm font-bold text-slate-900">Stir-Fried with Chilies</p><p class="mt-2 text-sm leading-relaxed text-slate-600">A Yunnan-style preparation: matsutake slices quickly stir-fried with dried chilies, garlic, and green peppers. The spiciness complements rather than overwhelms the mushroom. 50&ndash;80 RMB per plate.</p></div>
+      <div class="rounded-xl border border-slate-200 p-4"><p class="text-sm font-bold text-slate-900">Matsutake Chicken Soup</p><p class="mt-2 text-sm leading-relaxed text-slate-600">A classic healing soup: whole matsutake simmered with free-range chicken, goji berries, and ginger in a clay pot. Tibetans believe it strengthens the body against altitude. 80&ndash;120 RMB per pot.</p></div>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Where to Eat Matsutake in Season</h2>
+    <p class="mt-4 text-base leading-relaxed text-slate-600"><strong>Dukezong Old Town restaurants</strong> all feature matsutake specials during July&ndash;September. Prices are <strong>40&ndash;80 RMB per dish</strong> depending on preparation and mushroom size. The best restaurants display fresh matsutake at the entrance &mdash; pick your mushroom and they cook it.</p>
+    <p class="mt-4 text-base leading-relaxed text-slate-600"><strong>Local markets</strong> (morning market at Dukezong east gate) sell fresh matsutake by weight. Buy directly from foragers and ask a nearby restaurant to cook them for you &mdash; many will for a small fee (20&ndash;30 RMB).</p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Where to Buy Matsutake</h2>
+    <p class="mt-4 text-base leading-relaxed text-slate-600"><strong>Fresh matsutake</strong> (in season): <strong>150&ndash;400 RMB per 500g</strong> depending on grade. Buy at the morning market or directly from village cooperatives. Grade A (closed cap, firm, aromatic) costs the most. Grade C (open cap, used for soup) is 30&ndash;50% cheaper.</p>
+    <p class="mt-4 text-base leading-relaxed text-slate-600"><strong>Dried matsutake</strong> (year-round): <strong>200&ndash;600 RMB per 100g</strong>. Vacuum-sealed packages available at specialty shops in the old town and at Diqing Airport duty-free. Rehydrate by soaking in warm water for 30 minutes before cooking.</p>
+    <p class="mt-4 text-base leading-relaxed text-slate-600"><strong>Matsutake oil</strong> (year-round): <strong>60&ndash;120 RMB per bottle</strong>. Dried matsutake infused in oil with Sichuan peppercorns &mdash; a versatile condiment for noodle dishes. Sold at tea and spice shops in Dukezong.</p>
+  </section>
+
+  <div class="mt-12 rounded-2xl bg-slate-50 p-6">
+    <p class="text-sm font-semibold text-emerald-700">Related Food &amp; Culture &raquo;</p>
+    <div class="mt-3 flex flex-wrap gap-2">
+      <a href="/food/yak-hotpot" class="rounded-full bg-white border border-slate-200 px-4 py-1.5 text-sm text-slate-700 hover:border-emerald-300 hover:text-emerald-700 transition-colors">Yak Hotpot</a>
+      <a href="/food/tibetan-barley-wine" class="rounded-full bg-white border border-slate-200 px-4 py-1.5 text-sm text-slate-700 hover:border-emerald-300 hover:text-emerald-700 transition-colors">Tibetan Barley Wine</a>
+      <a href="/food/yak-butter-tea" class="rounded-full bg-white border border-slate-200 px-4 py-1.5 text-sm text-slate-700 hover:border-emerald-300 hover:text-emerald-700 transition-colors">Yak Butter Tea</a>
+    </div>
+  </div>
+  
+</DetailLayout>

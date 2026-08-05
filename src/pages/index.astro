@@ -1,0 +1,1002 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+
+const quickFacts = [
+  { label: "Altitude", value: "3,160 m" },
+  { label: "Airport", value: "Diqing (DIG)" },
+  { label: "Best Months", value: "May & Sep-Oct" },
+  { label: "Avg Stay", value: "2-4 days" },
+  { label: "Currency", value: "RMB (CNY)" },
+  { label: "Timezone", value: "UTC+8" },
+];
+
+const mustSeeSpots = [
+  { slug: "pudacuo-national-park", name: "Pudacuo National Park", image: "pudacuo-national-park.webp", stars: 5, tag: "Nature", altitude: "3,500 m", time: "4-6 hrs", best: "May-Oct", ticket: "100 RMB", desc: "Pristine alpine lakes, wetlands, and forests. Home to rare black-necked cranes. The Shudu Lake trail offers the most photogenic views in Shangri-La." },
+  { slug: "songzanlin-monastery", name: "Songzanlin Monastery", image: "songzanlin-monastery.webp", stars: 5, tag: "Culture", altitude: "3,300 m", time: "2-3 hrs", best: "All year", ticket: "115 RMB", desc: "The largest Tibetan Buddhist monastery in Yunnan, built in 1679. Often called the Little Potala Palace. Morning chanting ceremonies at 6:30 AM are open to visitors." },
+  { slug: "dukezong-old-town", name: "Dukezong Old Town", image: "dukezong-old-town.webp", stars: 4, tag: "History", altitude: "3,300 m", time: "2-4 hrs", best: "All year", ticket: "Free", desc: "A 1,300-year-old Tibetan quarter rebuilt after the 2014 fire. Home to the world's largest prayer wheel (21m tall). Best explored at dusk when lanterns light up the lanes." },
+  { slug: "napa-lake", name: "Napa Lake", image: "napa-lake.webp", stars: 4, tag: "Nature", altitude: "3,266 m", time: "2-4 hrs", best: "May-Oct", ticket: "60 RMB", desc: "A seasonal highland lake that transforms into a vast grassland in dry months. Yak and horse grazing with snow-capped mountain backdrops. Stunning at sunset." },
+  { slug: "tiger-leaping-gorge", name: "Tiger Leaping Gorge", image: "tiger-leaping-gorge.webp", stars: 5, tag: "Adventure", altitude: "1,800-2,670 m", time: "1-2 days", best: "Apr-Jun, Sep-Oct", ticket: "65 RMB", desc: "One of the deepest river gorges in the world. The high trail is a world-class 2-day trek with guesthouses along the route. Day trips to the upper gorge are also possible." },
+  { slug: "meili-snow-mountain", name: "Meili Snow Mountain", image: "meili-snow-mountain.webp", stars: 5, tag: "Nature", altitude: "6,740 m", time: "1-2 days", best: "Oct-May", ticket: "Free (viewing)", desc: "Sacred to Tibetan Buddhists, the Meili range includes Kawagebo, Yunnan's highest peak. The sunrise view from Feilai Temple is one of China's most iconic landscapes." },
+  { slug: "balagezong-canyon", name: "Balagezong Canyon", image: "balagezong-canyon.webp", stars: 4, tag: "Nature", altitude: "2,200-4,000 m", time: "4-6 hrs", best: "May-Oct", ticket: "170 RMB", desc: "A dramatic canyon with hanging coffins, Tibetan villages, and a glass skywalk. Less touristy than Tiger Leaping Gorge but equally impressive." },
+  { slug: "baishuitai-terraces", name: "Baishuitai Terraces", image: "baishuitai-terraces.webp", stars: 4, tag: "Nature", altitude: "2,380 m", time: "2-3 hrs", best: "Mar-May", ticket: "30 RMB", desc: "Natural travertine terraces nicknamed China's Pamukkale. Spring-fed mineral pools cascade down a hillside. Best in morning light when the pools are most reflective." },
+];
+
+const itineraries = [
+  { days: "2 Days", title: "City Express", desc: "Day 1: Morning chanting at Songzanlin Monastery, lunch at a Tibetan tea house in Dukezong Old Town, cobblestone lane stroll, sunset at Napa Lake. Day 2: Full morning at Pudacuo National Park (Shudu Lake trail), lunch at the park exit noodle shop, afternoon departure. Best for weekend trips. Eat: Yak butter tea and tsampa at a Dukezong tea house." },
+  { days: "3 Days", title: "Classic Shangri-La", desc: "Day 1: City highlights (Songzanlin + Dukezong + Napa Lake). Day 2: Pudacuo National Park with packed lunch. Day 3: Tiger Leaping Gorge upper section day trip - 2h drive each way, 2-3h hike on paved trail. The most popular itinerary. Eat: Naxi grilled fish at a guesthouse near the gorge on Day 3." },
+  { days: "5 Days", title: "Extended Explorer", desc: "Day 1-2: Local highlights at relaxed altitude pace. Day 3: Tiger Leaping Gorge full day. Day 4: Scenic drive to Feilai Temple (4 hrs) via Baima Snow Mountain pass. Day 5: 7 AM sunrise over Meili Snow Mountain, then drive back to Shangri-La. Eat: Yak hotpot in Deqin town on Day 4 evening." },
+  { days: "7+ Days", title: "Full Yunnan Circuit", desc: "Days 1-3: Classic Shangri-La. Day 4: Balagezong Canyon day trip. Day 5: Baishuitai Terraces. Day 6: Drive to Lijiang (3.5 hrs), explore UNESCO old town. Day 7: Jade Dragon Snow Mountain or Shuhe Ancient Town. Extend to Dali (+2 days) for Erhai Lake cycling. Eat: Lijiang baba (flatbread) and Dali crosstalk tofu." },
+];
+
+const weatherData = [
+  { month: "Jan", tempHi: "6", tempLo: "-10", rain: "3", rating: "Fair" },
+  { month: "Feb", tempHi: "8", tempLo: "-8", rain: "5", rating: "Fair" },
+  { month: "Mar", tempHi: "11", tempLo: "-4", rain: "8", rating: "Good" },
+  { month: "Apr", tempHi: "15", tempLo: "-1", rain: "15", rating: "Good" },
+  { month: "May", tempHi: "19", tempLo: "3", rain: "30", rating: "Best" },
+  { month: "Jun", tempHi: "21", tempLo: "7", rain: "80", rating: "Best" },
+  { month: "Jul", tempHi: "22", tempLo: "9", rain: "150", rating: "Wet" },
+  { month: "Aug", tempHi: "21", tempLo: "8", rain: "140", rating: "Wet" },
+  { month: "Sep", tempHi: "19", tempLo: "5", rain: "60", rating: "Best" },
+  { month: "Oct", tempHi: "15", tempLo: "0", rain: "20", rating: "Best" },
+  { month: "Nov", tempHi: "10", tempLo: "-6", rain: "5", rating: "Good" },
+  { month: "Dec", tempHi: "7", tempLo: "-9", rain: "2", rating: "Fair" },
+];
+
+const faqs = [
+  { q: "Is Shangri-La worth visiting?", a: "Yes, absolutely. It is one of the most unique destinations in China. The combination of Tibetan Buddhist culture, dramatic Himalayan scenery, and a palpable sense of remoteness creates an experience that no other place in Yunnan offers. The altitude and journey add to the mystique." },
+  { q: "Do I need a special permit to visit Shangri-La?", a: "No. Unlike the Tibet Autonomous Region, Shangri-La (Diqing Tibetan Autonomous Prefecture) does not require a special travel permit or a Tibet Travel Permit. A standard Chinese visa is sufficient for foreign visitors. You can travel independently." },
+  { q: "How do I deal with the altitude sickness?", a: "Most visitors adapt within 24-48 hours. Key tips: spend your first day at a relaxed pace, drink 3-4 liters of water, avoid alcohol, eat light meals, and consider Diamox (acetazolamide) starting 1-2 days before arrival. Oxygen canisters are sold everywhere if needed." },
+  { q: "When is the best time to visit Shangri-La?", a: "May to June offers blooming rhododendrons and comfortable temperatures. September to October brings clear skies, golden autumn colors, and stable weather. Avoid July-August for monsoon rains and December-February for extreme cold and possible road closures." },
+  { q: "How do I get to Shangri-La from Lijiang?", a: "The Lijiang-Shangri-La Expressway takes approximately 3.5 hours by car. Daily flights from Lijiang to Diqing Shangri-La Airport (DIG) take 1 hour. Buses depart regularly from Lijiang Bus Station (4-5 hours). A high-speed railway line is under construction." },
+  { q: "Is Shangri-La safe for solo travelers?", a: "Yes, Shangri-La is very safe. Violent crime is extremely rare. The main risks are altitude-related health issues and traffic safety on mountain roads. Solo female travelers report feeling comfortable here. Basic Mandarin or a translation app is helpful as English is not widely spoken." },
+  { q: "What should I pack for Shangri-La?", a: "Pack layers: the temperature can swing 15 C in a day. Essentials: sunscreen (UV is intense at altitude), lip balm, moisturizer, sunglasses, comfortable walking shoes, a warm jacket even in summer, rain gear (May-Oct), and altitude sickness medication." },
+  { q: "Can I use credit cards in Shangri-La?", a: "Cash is still king, especially in smaller establishments. Major hotels and upscale restaurants accept international cards, but bring RMB cash for local restaurants, taxis, and market purchases. WeChat Pay and Alipay are ubiquitous for those with Chinese bank accounts." },
+  { q: "How much does a trip to Shangri-La cost?", a: "Budget travelers can manage on 200-400 RMB per day (hostel, local food, public transport). Mid-range travelers should budget 600-1,000 RMB per day. Luxury travelers can expect 1,500+ RMB per day. Flights to/from Shangri-La are additional." },
+  { q: "Is English widely spoken in Shangri-La?", a: "No. English is rare outside international hotels and some upscale restaurants. Hotel front desks in Dukezong Old Town usually have someone with basic English. For everything else, download Google Translate with the Chinese offline pack or use Pleco. Learn three phrases: 'Ni hao' (hello), 'Xie xie' (thank you), and showing your hotel address card to taxi drivers." },
+  { q: "Do I need a VPN to visit Shangri-La?", a: "Yes. Google, Gmail, Instagram, Facebook, WhatsApp, and Google Maps are blocked in China. Install and test a VPN before you leave home — you cannot download VPN apps after arrival. LetsVPN, Astrill, and Mullvad are reliable choices. Hotel WiFi and local SIM cards both go through the firewall." },
+  { q: "Can I visit Shangri-La with China's visa-free policy?", a: "Probably yes. As of 2025-2026, 38 countries have 15-day visa-free entry (most EU, Australia, NZ, Malaysia, Japan, South Korea, etc.). An additional 54 countries qualify for 144-hour transit visa-free via Kunming, Chengdu, or Chongqing. Check China's latest visa policy on your government's travel advisory site before booking." },
+  { q: "Is Shangri-La suitable for children or older travelers?", a: "Yes, with precautions. Children over 6 generally adapt well to 3,160 m. Seniors should consult a doctor about altitude and pre-existing conditions. Choose gentler activities (Old Town, Napa Lake by car, Songzanlin Monastery) and avoid Tiger Leaping Gorge trekking. Hotels in the new town offer more consistent comfort for families and older guests." },
+  { q: "What is the difference between Shangri-La City and Shangri-La County?", a: "Shangri-La City (formerly Zhongdian, renamed in 2001) is the urban center and county seat of Shangri-La County within Diqing Tibetan Autonomous Prefecture. When travelers say 'Shangri-La,' they usually mean the city and its surrounding attractions within a 100 km radius. The county covers 11,613 km² — larger than Jamaica." },
+  { q: "Can I hike independently or do I need a guide?", a: "Most trails are accessible independently. Tiger Leaping Gorge high trail is well-marked and dotted with guesthouses — no guide needed. Pudacuo requires you to use park shuttle buses. For remote areas like Yubeng Village or Balagezong, a local guide improves safety and experience. No special hiking permits are required for Shangri-La." },
+];
+
+// ==== NEW DATA: Shangri-La vs Tibet ====
+const vsTibet = [
+  { aspect: "Travel permit", shangriLa: "No permit needed. Standard Chinese visa only.", tibet: "Tibet Travel Permit + group tour + guide required.", winner: "shangri-la" },
+  { aspect: "Altitude", shangriLa: "3,160 m (city). Most attractions 3,200-3,500 m.", tibet: "3,656 m (Lhasa). Everest Base Camp 5,200 m.", winner: "shangri-la" },
+  { aspect: "Tibetan culture", shangriLa: "Authentic — monasteries, festivals, Tibetan majority prefecture.", tibet: "Deeper immersion but heavily regulated access.", winner: "tibet" },
+  { aspect: "Cost (7 days)", shangriLa: "2,000-5,000 RMB independent travel.", tibet: "6,000+ RMB (mandatory tour package).", winner: "shangri-la" },
+  { aspect: "Flexibility", shangriLa: "Independent travel, rent a car, go anywhere.", tibet: "Fixed itinerary, guide escorts, checkpoints.", winner: "shangri-la" },
+  { aspect: "Landscapes", shangriLa: "Alpine lakes, gorges, snow mountains, grasslands.", tibet: "Vaster, higher, more iconic. Himalayan spine.", winner: "tibet" },
+  { aspect: "Accessibility", shangriLa: "3.5 hrs from Lijiang by expressway. Direct flights.", tibet: "Train or flight. Permit processing takes 1-2 weeks.", winner: "shangri-la" },
+  { aspect: "Best for", shangriLa: "First-time China travelers, independent explorers, photographers.", tibet: "Hardcore trekkers, spiritual seekers, bucket-list travelers.", winner: "depends" },
+];
+
+// ==== NEW DATA: Altitude Acclimatization Timeline ====
+const acclimatizationTimeline = [
+  { day: "Day 1", title: "Arrive & Rest", desc: "Check into your hotel. Walk slowly, drink 3-4L water, eat light meals. Explore Dukezong Old Town at a relaxed pace. No alcohol. Take a short evening walk to the prayer wheel." },
+  { day: "Day 2", title: "Gentle Exploration", desc: "Visit Songzanlin Monastery (morning chanting is unforgettable but involves stairs — take it slow). Afternoon: Napa Lake by car. You should be 70-80% acclimatized by evening." },
+  { day: "Day 3", title: "Full Activity", desc: "You're ready for Pudacuo National Park (more walking at 3,500 m). Still carry water and an oxygen canister just in case. Most people feel completely normal by now." },
+  { day: "Day 4+", title: "Adventure Ready", desc: "Tiger Leaping Gorge trek, Meili Snow Mountain road trip, or Balagezong Canyon. Your body has adapted. Continue hydrating and avoid alcohol binges." },
+];
+
+// ==== NEW DATA: China Travel Starter Kit ====
+const chinaEntryKit = [
+  { title: "Visa Check", desc: "38 countries now have 15-day visa-free entry to China (2024-2025 policy, includes most EU, Australia, NZ, Malaysia, etc.). 54 countries qualify for 144-hour transit visa-free via Kunming/Chengdu. Check your eligibility before booking." },
+  { title: "VPN Setup", desc: "Install a VPN BEFORE arriving in China. Google, Gmail, Instagram, WhatsApp, Google Maps are all blocked. Popular choices: LetsVPN, Astrill, Mullvad. Download and test at home — you cannot install after arrival." },
+  { title: "Essential Apps", desc: "Install before departure: Didi (ride-hailing, works in English), Baidu Maps or Apple Maps (Google Maps is inaccurate in China), Pleco (offline Chinese dictionary), Google Translate (download Chinese offline pack)." },
+  { title: "SIM Card & Internet", desc: "Buy a China Unicom or China Mobile SIM at Kunming Airport (100-200 RMB for 20GB). eSIM options: Nomad, Airalo, Holafly. Hotel WiFi is reliable but behind the firewall. Pro tip: screenshot your hotel address in Chinese for taxi drivers." },
+  { title: "Payment Setup", desc: "Cash is accepted but digital payment dominates. If you can set up Alipay TourPass (links to international cards) or WeChat Pay Tour Card before arrival, you'll have a much smoother experience. Otherwise, carry enough RMB cash — ATMs work but some reject foreign cards." },
+  { title: "Travel Insurance", desc: "Essential for high-altitude travel. Ensure your policy covers trekking above 3,000 m and helicopter evacuation. World Nomads, SafetyWing, and True Traveller all cover China with altitude add-ons. Hospitals in Shangri-La are basic — serious cases go to Kunming." },
+];
+
+// ==== NEW DATA: Solo Travel ====
+const soloTravelTips = [
+  { title: "Meeting Other Travelers", desc: "Stay at a hostel in Dukezong Old Town (Jianshe Tang, Blue Moon Valley). These attract independent travelers from around the world. Common areas and rooftop cafes are natural social hubs. Join group day trips to Tiger Leaping Gorge to find trekking partners." },
+  { title: "Dining Alone", desc: "Tibetan tea houses are welcoming to solo diners. Try the momo (dumpling) shops near Sifang Street — counter seating is common. Hotpot restaurants are better with 2+ people, but most noodle shops and stir-fry places are solo-friendly." },
+  { title: "Getting Around Solo", desc: "Didi works for in-town trips (8-15 RMB). For day trips, ask your hostel to pair you with other guests to share a driver (400-600 RMB split 3-4 ways). The Lijiang-Shangri-La express bus is safe and costs 80 RMB." },
+  { title: "Safety Reality", desc: "Shangri-La has virtually no violent crime. The actual risks are: altitude sickness (know the symptoms), mountain road accidents (avoid night driving), and getting lost without cell signal (download offline maps). Female solo travelers consistently report feeling safe here." },
+];
+
+// ==== UPDATED: navSections with new sections ====
+const navSections = [
+  { id: "explore", label: "Explore" },
+  { id: "vs-tibet", label: "Vs Tibet" },
+  { id: "plan", label: "Plan" },
+  { id: "weather", label: "Weather" },
+  { id: "altitude", label: "Altitude" },
+  { id: "stay", label: "Stay" },
+  { id: "transport", label: "Transport" },
+  { id: "costs", label: "Costs" },
+  { id: "china-entry", label: "China Entry" },
+  { id: "food", label: "Food" },
+  { id: "solo", label: "Solo" },
+  { id: "faq", label: "FAQ" },
+];
+
+---
+
+<BaseLayout title="Shangri-La Yunnan Travel Guide 2026 — Complete Hub" description="Plan your Shangri-La Yunnan trip: top attractions, weather, altitude tips, hotels, transport, costs, food guides, and FAQs - all in one place.">
+
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is Shangri-La worth visiting?","acceptedAnswer":{"@type":"Answer","text":"Yes, absolutely. It is one of the most unique destinations in China. The combination of Tibetan Buddhist culture, dramatic Himalayan scenery, and a palpable sense of remoteness creates an experience that no other place in Yunnan offers."}},
+    {"@type":"Question","name":"Do I need a special permit to visit Shangri-La?","acceptedAnswer":{"@type":"Answer","text":"No. Unlike the Tibet Autonomous Region, Shangri-La does not require a special travel permit. A standard Chinese visa is sufficient for foreign visitors. You can travel independently."}},
+    {"@type":"Question","name":"How do I deal with the altitude sickness?","acceptedAnswer":{"@type":"Answer","text":"Most visitors adapt within 24-48 hours. Key tips: spend your first day at a relaxed pace, drink 3-4 liters of water, avoid alcohol, and consider Diamox starting 1-2 days before arrival."}},
+    {"@type":"Question","name":"When is the best time to visit Shangri-La?","acceptedAnswer":{"@type":"Answer","text":"May to June offers blooming rhododendrons and comfortable temperatures. September to October brings clear skies and golden autumn colors. Avoid July-August for monsoon rains."}},
+    {"@type":"Question","name":"How do I get to Shangri-La from Lijiang?","acceptedAnswer":{"@type":"Answer","text":"The Lijiang-Shangri-La Expressway takes approximately 3.5 hours by car. Daily flights from Lijiang to Diqing Shangri-La Airport (DIG) take 1 hour. Buses depart regularly from Lijiang Bus Station (4-5 hours)."}},
+    {"@type":"Question","name":"Is Shangri-La safe for solo travelers?","acceptedAnswer":{"@type":"Answer","text":"Yes, Shangri-La is very safe. Violent crime is extremely rare. The main risks are altitude-related health issues and traffic safety on mountain roads."}},
+    {"@type":"Question","name":"What should I pack for Shangri-La?","acceptedAnswer":{"@type":"Answer","text":"Pack layers: temperature can swing 15 C in a day. Essentials: sunscreen, lip balm, moisturizer, sunglasses, comfortable walking shoes, a warm jacket even in summer, rain gear (May-Oct), and altitude sickness medication."}},
+    {"@type":"Question","name":"Can I use credit cards in Shangri-La?","acceptedAnswer":{"@type":"Answer","text":"Cash is still king. Major hotels accept international cards, but bring RMB cash for local restaurants, taxis, and market purchases. WeChat Pay and Alipay are ubiquitous for those with Chinese bank accounts."}},
+    {"@type":"Question","name":"How much does a trip to Shangri-La cost?","acceptedAnswer":{"@type":"Answer","text":"Budget travelers can manage on 200-400 RMB per day. Mid-range travelers should budget 600-1,000 RMB per day. Luxury travelers can expect 1,500+ RMB per day."}},
+    {"@type":"Question","name":"Is English widely spoken in Shangri-La?","acceptedAnswer":{"@type":"Answer","text":"No. English is rare outside international hotels. Download Google Translate with Chinese offline pack or use Pleco. Learn basic phrases."}},
+    {"@type":"Question","name":"Do I need a VPN to visit Shangri-La?","acceptedAnswer":{"@type":"Answer","text":"Yes. Google, Gmail, Instagram, Facebook, WhatsApp are blocked in China. Install and test a VPN before you leave home."}},
+    {"@type":"Question","name":"Can I visit Shangri-La with China's visa-free policy?","acceptedAnswer":{"@type":"Answer","text":"As of 2025-2026, 38 countries have 15-day visa-free entry. An additional 54 countries qualify for 144-hour transit visa-free via Kunming, Chengdu, or Chongqing."}},
+    {"@type":"Question","name":"Is Shangri-La suitable for children or older travelers?","acceptedAnswer":{"@type":"Answer","text":"Yes, with precautions. Children over 6 generally adapt well. Seniors should consult a doctor. Choose gentler activities and avoid Tiger Leaping Gorge trekking."}},
+    {"@type":"Question","name":"What is the difference between Shangri-La City and Shangri-La County?","acceptedAnswer":{"@type":"Answer","text":"Shangri-La City is the urban center within Shangri-La County in Diqing Tibetan Autonomous Prefecture. The county covers 11,613 km²."}},
+    {"@type":"Question","name":"Can I hike independently or do I need a guide?","acceptedAnswer":{"@type":"Answer","text":"Most trails are accessible independently. Tiger Leaping Gorge high trail is well-marked. For remote areas like Yubeng Village, a local guide improves safety and experience."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  "name": "Shangri-La, Yunnan",
+  "description": "Shangri-La is a county-level city in Diqing Tibetan Autonomous Prefecture, Yunnan, China, at 3,160m altitude. Known for Tibetan Buddhist culture, alpine landscapes, and as the inspiration for James Hilton's Lost Horizon.",
+  "touristType": ["Cultural tourism", "Adventure travel", "Nature and wildlife tourism", "Religious tourism"],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 27.8256,
+    "longitude": 99.7017
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Shangri-La",
+    "addressRegion": "Yunnan",
+    "addressCountry": "CN"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"item":{"@type":"TouristAttraction","name":"Pudacuo National Park","description":"Pristine alpine lakes, wetlands, and forests at 3,500m. Home to rare black-necked cranes.","geo":{"@type":"GeoCoordinates","latitude":27.855,"longitude":99.982}}},
+    {"@type":"ListItem","position":2,"item":{"@type":"TouristAttraction","name":"Songzanlin Monastery","description":"The largest Tibetan Buddhist monastery in Yunnan, built in 1679. Often called the Little Potala Palace.","geo":{"@type":"GeoCoordinates","latitude":27.864,"longitude":99.703}}},
+    {"@type":"ListItem","position":3,"item":{"@type":"TouristAttraction","name":"Dukezong Old Town","description":"A 1,300-year-old Tibetan quarter with the world's largest prayer wheel at 21m tall.","geo":{"@type":"GeoCoordinates","latitude":27.818,"longitude":99.7035}}},
+    {"@type":"ListItem","position":4,"item":{"@type":"TouristAttraction","name":"Napa Lake","description":"A seasonal highland lake that transforms into a vast grassland, with yak grazing and snow-capped mountain backdrops.","geo":{"@type":"GeoCoordinates","latitude":27.89,"longitude":99.65}}},
+    {"@type":"ListItem","position":5,"item":{"@type":"TouristAttraction","name":"Tiger Leaping Gorge","description":"One of the deepest river gorges in the world, with a world-class 2-day high trail trek.","geo":{"@type":"GeoCoordinates","latitude":27.185,"longitude":100.135}}},
+    {"@type":"ListItem","position":6,"item":{"@type":"TouristAttraction","name":"Meili Snow Mountain","description":"Sacred to Tibetan Buddhists, includes Kawagebo, Yunnan's highest peak at 6,740m.","geo":{"@type":"GeoCoordinates","latitude":28.439,"longitude":98.683}}}
+  ]
+}
+</script>
+
+  <!-- Sticky Nav -->
+  <header id="top" class="fixed top-0 left-0 right-0 z-50 h-16 border-b border-slate-200/60 bg-white/85 backdrop-blur-lg transition-shadow">
+    <nav class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-slate-900 no-underline shrink-0">
+        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-white text-sm font-bold" aria-hidden="true">S</span>
+        <span class="hidden sm:inline">Shangri-La Guide</span>
+      </a>
+      <ul class="hidden items-center gap-0.5 lg:flex" role="list">
+        {navSections.map(s => (
+          <li><a href={`#${s.id}`} class="rounded-lg px-3 py-2 text-sm font-medium text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900">{s.label}</a></li>
+        ))}
+      </ul>
+      <button id="mobile-menu-btn" class="flex lg:hidden h-9 w-9 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100" aria-label="Menu">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="pt-16">
+    <!-- ===== HERO ===== -->
+    <section class="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-slate-900">
+      <div class="absolute inset-0">
+        <img
+          src="/images/shangri-la-hero.webp"
+          alt="Shangri-La Yunnan panoramic landscape with Meili Snow Mountain at golden sunrise, Tibetan prayer flags in foreground, alpine meadow"
+          class="absolute inset-0 w-full h-full object-cover"
+          width="1920"
+          height="1080" fetchpriority="high"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/85 z-10"></div>
+      </div>
+
+      <div class="relative z-30 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+        <div class="grid gap-10 lg:grid-cols-[1fr_360px] items-start">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-400 mb-5">Yunnan, China · 3,160m altitude</p>
+            <h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.04]">Shangri-La<br/><span class="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Travel Guide</span></h1>
+            <p class="mt-5 max-w-lg text-lg leading-relaxed text-slate-300">Everything you need to plan the perfect trip — attractions, weather, altitude guide, hotels, transport, costs, food, and FAQs. All on one page.</p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#explore" class="inline-flex h-11 items-center rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white transition-all hover:bg-emerald-500 active:scale-[0.98]">Explore attractions</a>
+              <a href="#plan" class="inline-flex h-11 items-center rounded-full border border-slate-600 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 active:scale-[0.98]">View itineraries</a>
+            </div>
+          </div>
+
+          <!-- Quick Facts -->
+          <div class="rounded-2xl border border-slate-700/50 bg-slate-800/80 backdrop-blur-xl p-5 shadow-2xl shadow-emerald-900/10">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400 mb-3">Quick Facts</h3>
+            <dl class="grid grid-cols-2 gap-x-4 gap-y-3">
+              {quickFacts.map(f => (
+                <div>
+                  <dt class="text-[11px] font-medium uppercase tracking-wide text-slate-400">{f.label}</dt>
+                  <dd class="mt-0.5 text-sm font-semibold text-white">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <div class="mt-4 pt-3 border-t border-slate-700/50 flex items-center gap-2 text-[11px] text-slate-400">
+              <span class="flex h-2 w-2 rounded-full bg-emerald-400"></span>
+              Updated August 2026
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY VISIT ===== -->
+    <section class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 sm:grid-cols-3">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 mb-4 text-lg font-bold">1</span>
+            <h3 class="text-lg font-bold text-slate-900">Authentic Tibetan Culture</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500">Experience genuine Tibetan Buddhist traditions without needing a Tibet permit. Morning chanting at Songzanlin Monastery, prayer flag ceremonies, and centuries-old architecture.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600 mb-4 text-lg font-bold">2</span>
+            <h3 class="text-lg font-bold text-slate-900">Dramatic Landscapes</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500">From 6,740m snow peaks to deep gorges, alpine lakes to vast grasslands. Shangri-La packs more geographic diversity into one prefecture than most countries.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50/50 p-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 mb-4 text-lg font-bold">3</span>
+            <h3 class="text-lg font-bold text-slate-900">Accessible Adventure</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500">Modern expressway from Lijiang, direct flights from major Chinese cities. World-class trekking, photography, and cultural immersion without the logistical complexity of remote Tibet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== SHANGRI-LA VS TIBET ===== -->
+    <section id="vs-tibet" class="bg-slate-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Comparison</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Shangri-La vs Tibet</h2>
+          <p class="mt-3 max-w-xl text-base leading-relaxed text-slate-500">Many travelers wonder: can Shangri-La replace Tibet? Here's an honest side-by-side comparison so you can decide which fits your trip.</p>
+        </div>
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <th class="px-4 py-3 text-left font-semibold text-slate-600 w-[20%]">Aspect</th>
+                <th class="px-4 py-3 text-left font-semibold text-emerald-700 w-[33%]">Shangri-La</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600 w-[33%]">Tibet (TAR)</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600 w-[14%]">Winner</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {vsTibet.map(row => (
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-4 py-3 font-medium text-slate-700">{row.aspect}</td>
+                  <td class="px-4 py-3 text-slate-500">{row.shangriLa}</td>
+                  <td class="px-4 py-3 text-slate-500">{row.tibet}</td>
+                  <td class="px-4 py-3">
+                    {row.winner === 'shangri-la' ? (
+                      <span class="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">Shangri-La</span>
+                    ) : row.winner === 'tibet' ? (
+                      <span class="inline-flex items-center rounded-full bg-sky-50 px-2.5 py-0.5 text-xs font-semibold text-sky-700">Tibet</span>
+                    ) : (
+                      <span class="inline-flex items-center rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700">Depends</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-sm text-slate-400"><strong>Bottom line:</strong> Shangri-La wins on accessibility, cost, and freedom. Tibet wins on scale and spiritual depth. If you want Tibetan culture without the logistical headache, Shangri-La is your answer. If Tibet is a lifelong dream and you're okay with a guided tour, go for it — or do both.</p>
+      </div>
+    </section>
+    <!-- ===== ATTRACTIONS ===== -->
+    <section id="explore" class="bg-slate-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Must See</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Attractions</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Eight places that define Shangri-La. Click any card for details: altitude, time needed, best season, and ticket prices.</p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {mustSeeSpots.map((spot, i) => (
+            <details class={`group rounded-2xl border border-slate-200 bg-white transition-all [&[open]]:border-emerald-200 [&[open]]:shadow-lg [&[open]]:shadow-slate-200/50 ${i >= 4 ? '' : ''}`}>
+              <summary class="flex cursor-pointer list-none items-start gap-3 p-5 text-left">
+                <img src={`/images/${spot.image}`} alt={`${spot.name} Shangri-La Yunnan`} class="w-16 h-16 rounded-lg flex-shrink-0 object-cover" width="64" height="64" loading="lazy" />
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">{spot.tag}</span>
+                    <span class="flex gap-0.5" aria-label={`${spot.stars} out of 5 stars`}>
+                      {Array.from({length: spot.stars}, () => (
+                        <svg class="h-3 w-3 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                      ))}
+                    </span>
+                  </div>
+                  <h3 class="text-base font-bold tracking-tight text-slate-900">{spot.name}</h3>
+                </div>
+                <svg class="h-4 w-4 flex-shrink-0 mt-1 text-slate-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-5 space-y-3">
+                <p class="text-sm leading-relaxed text-slate-500">{spot.desc}</p>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-2 rounded-xl bg-slate-50 p-3">
+                  <div><span class="text-[11px] uppercase tracking-wide text-slate-400">Altitude</span><p class="text-sm font-semibold text-slate-700">{spot.altitude}</p></div>
+                  <div><span class="text-[11px] uppercase tracking-wide text-slate-400">Time</span><p class="text-sm font-semibold text-slate-700">{spot.time}</p></div>
+                  <div><span class="text-[11px] uppercase tracking-wide text-slate-400">Best Season</span><p class="text-sm font-semibold text-slate-700">{spot.best}</p></div>
+                  <div><span class="text-[11px] uppercase tracking-wide text-slate-400">Ticket</span><p class="text-sm font-semibold text-slate-700">{spot.ticket}</p></div>
+                </div>
+                <a href={`/attractions/${spot.slug}`} class="mt-1 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors">Read Full Guide <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAP ===== -->
+    <section id="map" class="relative bg-white py-20 sm:py-28 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(21,128,61,0.05),transparent_60%)]"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Interactive</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Map</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">All landmarks on one map. Hover for names, click for details.</p>
+        </div>
+        <div id="map-container" class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white z-10 h-[500px] sm:h-[600px]">
+          <div id="leaflet-map" class="w-full h-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaflet CSS + JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin></script>
+    <script>
+      (function(){function initMap(){if(typeof L==="undefined"){setTimeout(initMap,200);return}var el=document.getElementById("leaflet-map");if(!el||el.dataset.loaded)return;el.dataset.loaded="1";var map=L.map("leaflet-map",{center:[27.86,99.72],zoom:10,zoomControl:true,scrollWheelZoom:true});L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{attribution:"&copy; OpenStreetMap &copy; CARTO",subdomains:"abcd",maxZoom:18}).addTo(map);var mk=L.divIcon({html:'<div style="width:26px;height:26px;background:#15803d;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700">\u25B2</div>',iconSize:[26,26],iconAnchor:[13,26],popupAnchor:[0,-28]});var ck=L.divIcon({html:'<div style="width:34px;height:34px;background:#f59e0b;border:3px solid #fff;border-radius:50%;box-shadow:0 3px 14px rgba(245,158,11,0.5);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700">\u2605</div>',iconSize:[34,34],iconAnchor:[17,17]});var spots=[["Songzanlin Monastery",27.8640,99.7030,"Culture","songzanlin-monastery"],["Dukezong Old Town",27.8180,99.7035,"History","dukezong-old-town"],["Pudacuo National Park",27.8550,99.9820,"Nature","pudacuo-national-park"],["Napa Lake",27.8900,99.6500,"Nature","napa-lake"],["Tiger Leaping Gorge",27.1850,100.1350,"Adventure","tiger-leaping-gorge"],["Meili Snow Mountain",28.4390,98.6830,"Nature","meili-snow-mountain"],["Balagezong Canyon",28.0110,99.5310,"Nature","balagezong-canyon"],["Baishuitai Terraces",27.4840,100.0340,"Nature","baishuitai-terraces"]];spots.forEach(function(s){var m=L.marker([s[1],s[2]],{icon:mk}).addTo(map);m.bindTooltip(s[0],{direction:"top",offset:[0,-28]});m.bindPopup('<div style="font-family:system-ui,sans-serif;font-size:13px;padding:2px 0"><strong style="color:#0f172a">'+s[0]+'</strong><br><span style="display:inline-block;margin-top:3px;background:#f0fdf4;color:#15803d;padding:1px 6px;border-radius:10px;font-size:10px;font-weight:600">'+s[3]+'</span><br><a href="/attractions/'+s[4]+'" style="display:inline-block;margin-top:6px;color:#15803d;font-size:12px;font-weight:600;text-decoration:none;padding:4px 10px;border:1px solid #15803d;border-radius:6px">Read Full Guide →</a></div>',{maxWidth:220})});var cm=L.marker([27.8256,99.7017],{icon:ck,zIndexOffset:100}).addTo(map);cm.bindTooltip("Shangri-La City",{direction:"top",offset:[0,-18],permanent:true});setTimeout(function(){map.invalidateSize()},200);window.addEventListener("resize",function(){map.invalidateSize()});var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)map.invalidateSize()})});obs.observe(document.getElementById("map"))}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initMap)}else{initMap()}})();
+    </script>
+
+    <!-- ===== ITINERARIES ===== -->
+    <section id="plan" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Trip Plans</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Itineraries</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Pick your duration. Each plan is tested and optimized for logistics and timing.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {itineraries.map(item => (
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <span class="inline-flex h-7 items-center rounded-full bg-emerald-50 px-2.5 text-xs font-bold text-emerald-700">{item.days}</span>
+              <h3 class="mt-3 text-lg font-bold tracking-tight text-slate-900">{item.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-500">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WEATHER ===== -->
+    <section id="weather" class="bg-slate-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Climate</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Weather by Month</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Plan around the seasons. Temperatures in Celsius, rainfall in millimeters.</p>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Month</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">High (C)</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Low (C)</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Rain (mm)</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Rating</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {weatherData.map(w => (
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-4 py-2.5 font-medium text-slate-700">{w.month}</td>
+                  <td class="px-4 py-2.5 text-slate-500">{w.tempHi}deg</td>
+                  <td class="px-4 py-2.5 text-slate-500">{w.tempLo}deg</td>
+                  <td class="px-4 py-2.5 text-slate-500">{w.rain}</td>
+                  <td class="px-4 py-2.5">
+                    <span class={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${w.rating === 'Best' ? 'bg-emerald-50 text-emerald-700' : w.rating === 'Good' ? 'bg-sky-50 text-sky-700' : w.rating === 'Fair' ? 'bg-amber-50 text-amber-700' : 'bg-slate-100 text-slate-600'}`}>{w.rating}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-sm text-slate-400">Best months for visiting: May, June, September, October. Avoid July-August (monsoon) and December-February (extreme cold, possible road closures).</p>
+      </div>
+    </section>
+
+    <!-- ===== LIVE WEATHER ===== -->
+    <section id="live-weather" class="bg-slate-50 py-16 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Real-Time</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Live Weather</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Current conditions in Shangri-La updated hourly from Open-Meteo.</p>
+        </div>
+        <div id="weather-widget" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-center justify-center py-10 text-slate-400">
+            <svg class="w-5 h-5 animate-spin mr-3" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+            <span class="text-sm">Loading weather data...</span>
+          </div>
+        </div>
+        <p class="mt-3 text-xs text-slate-400">Data from Open-Meteo API. Shangri-La coordinates: 27.83 N, 99.70 E.</p>
+      </div>
+    </section>
+
+    <!-- ===== ALTITUDE GUIDE ===== -->
+    <section id="altitude" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-2">
+          <div>
+            <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Health</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Altitude Guide</h2>
+            <p class="mt-3 max-w-md text-base leading-relaxed text-slate-500">Shangri-La sits at 3,160m. Most visitors adapt in 24-48 hours. Here is what to expect and how to prepare.</p>
+
+            <div class="mt-8 space-y-3">
+              <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <p class="text-sm font-bold text-slate-900">Mild symptoms (normal)</p>
+                <p class="mt-1 text-sm text-slate-500">Headache, shortness of breath when walking uphill, fatigue, mild insomnia. These are normal and usually resolve within a day.</p>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <p class="text-sm font-bold text-slate-900">Prevention tips</p>
+                <p class="mt-1 text-sm text-slate-500">Arrive gradually if possible (spend a night at 2,400m Lijiang first). Drink 3-4 liters of water daily. Avoid alcohol for the first 48 hours. Eat light, high-carb meals.</p>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <p class="text-sm font-bold text-slate-900">Medication</p>
+                <p class="mt-1 text-sm text-slate-500">Diamox (acetazolamide) 125mg twice daily starting 1-2 days before arrival significantly reduces symptoms. Oxygen canisters (30-50 RMB) available everywhere. Ibuprofen helps with headaches.</p>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <p class="text-sm font-bold text-slate-900">When to descend</p>
+                <p class="mt-1 text-sm text-slate-500">If you experience severe headache unresponsive to medication, confusion, difficulty breathing at rest, or chest tightness, descend immediately. Diqing has a hospital with altitude sickness expertise.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Altitude at Key Locations</h3>
+            <div class="space-y-3">
+              {[
+                { loc: "Shangri-La city center", alt: "3,160 m", note: "Base elevation for most visitors" },
+                { loc: "Dukezong Old Town", alt: "3,300 m", note: "Within city, gentle uphill" },
+                { loc: "Songzanlin Monastery", alt: "3,300 m", note: "Steps can be challenging first day" },
+                { loc: "Napa Lake", alt: "3,266 m", note: "Flat terrain, easy walking" },
+                { loc: "Pudacuo National Park", alt: "3,500 m", note: "Boardwalks, moderate exertion" },
+                { loc: "Balagezong Canyon", alt: "2,200-4,000 m", note: "Wide range, highest point requires car" },
+                { loc: "Feilai Temple (Meili)", alt: "3,400 m", note: "Overnight stays available" },
+                { loc: "Kawagebo Peak", alt: "6,740 m", note: "Viewing only, no climbing permitted" },
+              ].map(item => (
+                <div class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 p-3">
+                  <div>
+                    <p class="text-sm font-semibold text-slate-700">{item.loc}</p>
+                    <p class="text-xs text-slate-400">{item.note}</p>
+                  </div>
+                  <span class="text-sm font-bold text-slate-900 shrink-0">{item.alt}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+            <div class="mt-16">
+              <h3 class="text-xl font-bold text-slate-900 mb-6">Acclimatization Timeline: What to Do Each Day</h3>
+              <div class="space-y-4">
+                {acclimatizationTimeline.map(day => (
+                  <div class="rounded-xl border border-emerald-200 bg-emerald-50/30 p-4">
+                    <div class="flex items-baseline gap-3 mb-2">
+                      <span class="text-sm font-bold text-emerald-700">{day.day}</span>
+                      <span class="text-sm font-semibold text-slate-700">{day.title}</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-500">{day.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <p class="mt-4 text-xs text-slate-400">This timeline assumes you arrive from Lijiang (2,400 m). If flying directly from sea level, expect symptoms to be 20-30% more intense and allow an extra rest day.</p>
+            </div>
+      </div>
+    </section>
+
+    <!-- ===== WHERE TO STAY ===== -->
+    <section id="stay" class="bg-slate-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Accommodation</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Where to Stay</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Three areas, three experiences. Pick based on your travel style.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-3">
+          <div class="rounded-2xl border border-slate-200 bg-white p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </span>
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Old Town</h3>
+                <p class="text-xs text-slate-400">Dukezong area</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-500">Cobblestone charm, boutique Tibetan guesthouses, walkable to everything. Atmospheric at night with lantern-lit lanes and the prayer wheel.</p>
+            <div class="mt-3 flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2">
+              <span class="text-xs text-slate-400">Price range</span>
+              <span class="text-sm font-semibold text-slate-700">80-400 RMB</span>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <div>
+                <h3 class="text-base font-bold text-slate-900">New Town</h3>
+                <p class="text-xs text-slate-400">City center</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-500">Modern hotels with consistent international standards, chain options, larger rooms, and reliable heating. Better for comfort-oriented travelers.</p>
+            <div class="mt-3 flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2">
+              <span class="text-xs text-slate-400">Price range</span>
+              <span class="text-sm font-semibold text-slate-700">200-800 RMB</span>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Countryside</h3>
+                <p class="text-xs text-slate-400">Napa Lake / Pudacuo</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-500">Scenic lodges with mountain views, Tibetan homestays with home-cooked meals, and boutique resorts. Peaceful, photogenic, but need transport. Recommended: Banyan Tree Ringha (5-star Tibetan village resort, 1,200-2,000 RMB), Napa Lake Guesthouse (authentic homestay with yak views, 150-300 RMB), Songtsam Linka Retreat (lakeside boutique, 700-1,000 RMB).</p>
+            <div class="mt-3 flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2">
+              <span class="text-xs text-slate-400">Price range</span>
+              <span class="text-sm font-semibold text-slate-700">150-1,200 RMB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRANSPORT ===== -->
+    <section id="transport" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Getting There</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Transportation</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Four ways to reach Shangri-La, compared by time, cost, and convenience.</p>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Method</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">From</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Duration</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Cost (RMB)</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Best For</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Flight</td><td class="px-4 py-3 text-slate-500">Kunming / Chengdu / Lhasa</td><td class="px-4 py-3 text-slate-500">1-2 hrs</td><td class="px-4 py-3 text-slate-500">300-800</td><td class="px-4 py-3 text-slate-500">Long-distance travelers</td></tr>
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Expressway</td><td class="px-4 py-3 text-slate-500">Lijiang</td><td class="px-4 py-3 text-slate-500">3.5 hrs</td><td class="px-4 py-3 text-slate-500">80-150</td><td class="px-4 py-3 text-slate-500">Scenic road trip</td></tr>
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Long-distance Bus</td><td class="px-4 py-3 text-slate-500">Kunming / Dali</td><td class="px-4 py-3 text-slate-500">6-10 hrs</td><td class="px-4 py-3 text-slate-500">100-200</td><td class="px-4 py-3 text-slate-500">Budget travelers</td></tr>
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Private Car</td><td class="px-4 py-3 text-slate-500">Lijiang / Dali</td><td class="px-4 py-3 text-slate-500">3.5-5 hrs</td><td class="px-4 py-3 text-slate-500">400-800</td><td class="px-4 py-3 text-slate-500">Groups, flexibility</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
+            <p class="text-sm font-bold text-slate-900">Diqing Shangri-La Airport (DIG)</p>
+            <p class="mt-1 text-sm text-slate-500">Direct flights from Kunming (1 hr), Chengdu (1.5 hrs), Lhasa (2 hrs), Guangzhou (2.5 hrs), Xishuangbanna (1 hr), Chongqing (2 hrs). Airport is 5 km from city center. Taxi to town: 30 RMB. Flights bookable on Trip.com or Ctrip in English.</p>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
+            <p class="text-sm font-bold text-slate-900">Getting Around Town</p>
+            <p class="mt-1 text-sm text-slate-500">City taxis start at 8 RMB. For attractions outside town (Pudacuo, Napa Lake), hire a car for the day (400-600 RMB) or join a group tour from your hotel.</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Flight Routes to DIG</h3>
+          <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 bg-slate-50">
+                  <th class="px-4 py-2.5 text-left font-semibold text-slate-600">Departure</th>
+                  <th class="px-4 py-2.5 text-left font-semibold text-slate-600">Duration</th>
+                  <th class="px-4 py-2.5 text-left font-semibold text-slate-600">Airlines</th>
+                  <th class="px-4 py-2.5 text-left font-semibold text-slate-600">Frequency</th>
+                  <th class="px-4 py-2.5 text-left font-semibold text-slate-600">Price (one-way)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50/50"><td class="px-4 py-2.5 font-medium text-slate-700">Kunming (KMG)</td><td class="px-4 py-2.5 text-slate-500">1 hr</td><td class="px-4 py-2.5 text-slate-500">China Eastern, Lucky Air</td><td class="px-4 py-2.5 text-slate-500">6-8 daily</td><td class="px-4 py-2.5 text-slate-500">300-500 RMB</td></tr>
+                <tr class="hover:bg-slate-50/50"><td class="px-4 py-2.5 font-medium text-slate-700">Chengdu (CTU)</td><td class="px-4 py-2.5 text-slate-500">1.5 hrs</td><td class="px-4 py-2.5 text-slate-500">Air China, Sichuan Airlines</td><td class="px-4 py-2.5 text-slate-500">3-4 daily</td><td class="px-4 py-2.5 text-slate-500">400-700 RMB</td></tr>
+                <tr class="hover:bg-slate-50/50"><td class="px-4 py-2.5 font-medium text-slate-700">Lhasa (LXA)</td><td class="px-4 py-2.5 text-slate-500">2 hrs</td><td class="px-4 py-2.5 text-slate-500">Tibet Airlines</td><td class="px-4 py-2.5 text-slate-500">1-2 daily</td><td class="px-4 py-2.5 text-slate-500">500-900 RMB</td></tr>
+                <tr class="hover:bg-slate-50/50"><td class="px-4 py-2.5 font-medium text-slate-700">Guangzhou (CAN)</td><td class="px-4 py-2.5 text-slate-500">2.5 hrs</td><td class="px-4 py-2.5 text-slate-500">China Southern</td><td class="px-4 py-2.5 text-slate-500">1-2 daily</td><td class="px-4 py-2.5 text-slate-500">500-800 RMB</td></tr>
+                <tr class="hover:bg-slate-50/50"><td class="px-4 py-2.5 font-medium text-slate-700">Chongqing (CKG)</td><td class="px-4 py-2.5 text-slate-500">2 hrs</td><td class="px-4 py-2.5 text-slate-500">Sichuan Airlines</td><td class="px-4 py-2.5 text-slate-500">1-2 daily</td><td class="px-4 py-2.5 text-slate-500">400-600 RMB</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-3 text-xs text-slate-400">Book on Trip.com (English interface, international cards accepted). Prices fluctuate 30-50% during Chinese holidays (especially National Day Oct 1-7 and Spring Festival). Book 2-4 weeks ahead for the best rates.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== TRAVEL COSTS ===== -->
+    <section id="costs" class="bg-slate-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Budget</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Travel Costs</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Daily expenses per person in RMB. Flights to Shangri-La not included.</p>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50">
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Category</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Budget</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Comfort</th>
+                <th class="px-4 py-3 text-left font-semibold text-slate-600">Luxury</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Accommodation</td><td class="px-4 py-3 text-slate-500">80-150</td><td class="px-4 py-3 text-slate-500">200-500</td><td class="px-4 py-3 text-slate-500">600-1,200</td></tr>
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Meals</td><td class="px-4 py-3 text-slate-500">30-60</td><td class="px-4 py-3 text-slate-500">80-150</td><td class="px-4 py-3 text-slate-500">200-400</td></tr>
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Transport</td><td class="px-4 py-3 text-slate-500">30-80</td><td class="px-4 py-3 text-slate-500">100-200</td><td class="px-4 py-3 text-slate-500">300-600</td></tr>
+              <tr class="hover:bg-slate-50/50"><td class="px-4 py-3 font-medium text-slate-700">Attractions</td><td class="px-4 py-3 text-slate-500">50-100</td><td class="px-4 py-3 text-slate-500">100-200</td><td class="px-4 py-3 text-slate-500">200-400</td></tr>
+              <tr class="hover:bg-slate-50/50 bg-slate-50"><td class="px-4 py-3 font-semibold text-slate-900">Total / day</td><td class="px-4 py-3 font-semibold text-slate-900">190-390</td><td class="px-4 py-3 font-semibold text-slate-900">480-1,050</td><td class="px-4 py-3 font-semibold text-slate-900">1,300-2,600</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-sm text-slate-400">A 3-day trip at comfort level typically costs 1,500-3,000 RMB per person, excluding flights to Shangri-La. Budget travelers can manage 600-1,200 RMB for the same duration.</p>
+      </div>
+    </section>
+
+    <!-- ===== PACKING LIST ===== -->
+    <section id="pack" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Preparation</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Packing List</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">What to bring for every season. At 3,000m+, the sun is intense and temperatures swing dramatically.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <p class="text-sm font-bold text-slate-900 mb-3">Clothing</p>
+            <ul class="space-y-1.5 text-sm text-slate-500">
+              <li>Base layer (thermal)</li>
+              <li>Fleece or wool mid-layer</li>
+              <li>Windproof/waterproof jacket</li>
+              <li>Comfortable hiking pants</li>
+              <li>Warm hat and gloves</li>
+              <li>Sturdy walking shoes</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <p class="text-sm font-bold text-slate-900 mb-3">Sun Protection</p>
+            <ul class="space-y-1.5 text-sm text-slate-500">
+              <li>SPF 50+ sunscreen</li>
+              <li>UV-protective sunglasses</li>
+              <li>Wide-brimmed hat</li>
+              <li>Lip balm with SPF</li>
+              <li>Light scarf or buff</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <p class="text-sm font-bold text-slate-900 mb-3">Health & Comfort</p>
+            <ul class="space-y-1.5 text-sm text-slate-500">
+              <li>Altitude meds (Diamox)</li>
+              <li>Pain relievers (ibuprofen)</li>
+              <li>Moisturizer (air is dry)</li>
+              <li>Reusable water bottle</li>
+              <li>Hand sanitizer</li>
+              <li>Power bank</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <p class="text-sm font-bold text-slate-900 mb-3">Documents & Money</p>
+            <ul class="space-y-1.5 text-sm text-slate-500">
+              <li>Passport + visa copy</li>
+              <li>Travel insurance card</li>
+              <li>Cash (RMB) — essential</li>
+              <li>WeChat/Alipay (if possible)</li>
+              <li>Hotel booking confirmations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== CHINA TRAVEL STARTER KIT ===== -->
+    <section id="china-entry" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">First-Time Visitors</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">China Travel Starter Kit</h2>
+          <p class="mt-3 max-w-xl text-base leading-relaxed text-slate-500">Essential preparation for visiting Shangri-La as an international traveler. Visa, apps, payments, internet — everything you need sorted before you board the plane.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {chinaEntryKit.map(item => (
+            <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
+              <p class="text-sm font-bold text-slate-900">{item.title}</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-slate-500">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    <!-- ===== FOOD & CULTURE ===== -->
+    <section id="food" class="bg-slate-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Taste & Tradition</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Food & Culture</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Tibetan cuisine meets Yunnan flavors. Yak butter tea, barley wine, and monastery rituals.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { slug: "yak-butter-tea", title: "Yak Butter Tea", image: "yak-butter-tea.webp", desc: "Salty, rich, and energizing. Made from yak butter, tea leaves, and salt churned together. An acquired taste but central to Tibetan hospitality. Served in every household and monastery." },
+            { slug: "tsampa", title: "Tsampa", image: "tsampa.webp", desc: "Roasted barley flour mixed with butter tea into a dough-like consistency. The staple food of Tibetan nomads. High in energy, perfect for high-altitude trekking." },
+            { slug: "yak-hotpot", title: "Yak Hotpot", image: "yak-hotpot.webp", desc: "Tender yak meat simmered in a spicy broth with local vegetables and mushrooms. Best enjoyed on cold evenings. Try at local restaurants in the old town." },
+            { slug: "matsutake-mushrooms", title: "Matsutake Mushrooms", image: "matsutake-mushrooms.webp", desc: "Shangri-La is famous for wild matsutake mushrooms (July-September). Grilled, in hotpot, or stir-fried. A seasonal delicacy prized in Japan and exported worldwide." },
+            { slug: "tibetan-barley-wine", title: "Tibetan Barley Wine", image: "tibetan-barley-wine.webp", desc: "A mild, slightly sour fermented barley drink served warm. Lower alcohol than grape wine. Offered as a welcome drink in Tibetan homes and restaurants." },
+            { slug: "morning-chanting", title: "Morning Chanting", image: "morning-chanting.webp", desc: "At Songzanlin Monastery, monks gather for chanting at 6:30 AM daily. Visitors are welcome to observe from the sides. A profound cultural experience. Dress respectfully, no photos during ceremony." },
+          ].map(item => (
+            <div class="rounded-2xl border border-slate-200 bg-white p-5">
+              <img src={`/images/${item.image}`} alt={`${item.title} Shangri-La Yunnan`} class="w-full h-32 rounded-xl mb-3 object-cover" width="400" height="128" loading="lazy" />
+              <p class="text-base font-bold text-slate-900">{item.title}</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-500">{item.desc}</p>
+              <a href={`/food/${item.slug}`} class="mt-3 inline-flex items-center gap-1 rounded-lg text-sm font-medium text-emerald-600 hover:text-emerald-700 transition-colors">Learn More <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRAVEL TIPS ===== -->
+    <section id="tips" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Insider Knowledge</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Travel Tips</h2>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {[
+            { title: "Book flights 2-4 weeks ahead", body: "Diqing Airport has limited flights. Kunming-Shangri-La routes fill up during holidays. Book early for the best prices (300-500 RMB one way)." },
+            { title: "Spend a night in Lijiang first", body: "At 2,400m, Lijiang is a gentler introduction to altitude. One night there before heading up to 3,160m significantly reduces altitude sickness risk." },
+            { title: "Hire a Tibetan-speaking driver for Meili", body: "The 4-hour drive to Feilai Temple for the Meili sunrise is best done with a local driver who knows the mountain roads and weather patterns. 600-800 RMB round trip." },
+            { title: "Dress in layers, always", body: "A sunny afternoon can reach 22 C, then drop to 5 C after sunset. A backpack with an extra layer is essential even on short walks." },
+            { title: "Cash is essential", body: "While hotels accept cards, local restaurants, markets, and smaller guesthouses are cash-only. Withdraw RMB in Kunming or Lijiang before arriving." },
+            { title: "Respect monastery etiquette", body: "Walk clockwise around stupas and prayer wheels. Do not point your feet at Buddha statues. Ask before photographing monks. Remove hats inside temples." },
+            { title: "The prayer wheel ritual", body: "At Dukezong's giant prayer wheel, join locals in spinning it clockwise. Tradition says 3, 7, or 108 rotations bring blessings. A memorable way to connect with local culture." },
+            { title: "Download offline maps and translation", body: "Cell signal can be spotty outside town. Download offline Google Maps or Baidu Maps. A translation app (Google Translate or Pleco) is essential as English is limited." },
+          ].map(tip => (
+            <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
+              <p class="text-sm font-bold text-slate-900">{tip.title}</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-slate-500">{tip.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== SOLO TRAVEL ===== -->
+    <section id="solo" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Independent Travel</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Solo Travel in Shangri-La</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Traveling alone? Shangri-La is one of the safest and most rewarding solo destinations in China. Here's how to make the most of it.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {soloTravelTips.map(tip => (
+            <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
+              <p class="text-sm font-bold text-slate-900">{tip.title}</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-slate-500">{tip.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="bg-slate-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Answers</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="space-y-3">
+          {faqs.map(faq => (
+            <details class="group rounded-2xl border border-slate-200 bg-white transition-all [&[open]]:border-emerald-200 [&[open]]:shadow-sm">
+              <summary class="flex cursor-pointer list-none items-center justify-between p-5 text-left gap-4">
+                <span class="text-base font-semibold text-slate-900">{faq.q}</span>
+                <svg class="h-5 w-5 flex-shrink-0 text-slate-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-5">
+                <p class="text-sm leading-relaxed text-slate-500">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEARBY ===== -->
+    <section class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Extend Your Trip</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Nearby Destinations</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Shangri-La is the perfect base for exploring northwest Yunnan and beyond.</p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { name: "Lijiang", image: "lijiang-old-town.webp", dist: "3.5 hrs by car", desc: "UNESCO World Heritage old town with canals, Jade Dragon Snow Mountain, and Naxi minority culture." },
+            { name: "Dali", image: "dali-erhai-lake.webp", dist: "6 hrs by car", desc: "Erhai Lake, Cangshan Mountain, and the ancient Dali Kingdom capital. Laid-back backpacker hub with great cafes." },
+            { name: "Daocheng Yading", image: "daocheng-yading.webp", dist: "5 hrs by car", desc: "Sichuan's spectacular nature reserve with three sacred snow mountains. Often paired with Shangri-La on extended trips." },
+            { name: "Yubeng Village", image: "yubeng-village.webp", dist: "4 hrs + 5 hr trek", desc: "Remote Tibetan village at the foot of Meili Snow Mountain. No roads, accessible only by hiking. The ultimate Shangri-La experience for trekkers." },
+          ].map(dest => (
+            <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
+              <img src={`/images/${dest.image}`} alt={`${dest.name} near Shangri-La Yunnan`} class="w-full h-24 rounded-lg mb-3 object-cover" width="400" height="96" loading="lazy" />
+              <p class="text-sm font-bold text-slate-900">{dest.name}</p>
+              <p class="mt-0.5 text-xs font-medium text-slate-400">{dest.dist}</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-500">{dest.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== SOURCES ===== -->
+  <section class="bg-slate-50 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">References</p>
+      <h2 class="mt-2 text-2xl font-bold tracking-tight text-slate-900">Sources & Further Reading</h2>
+      <div class="mt-6 grid gap-2 sm:grid-cols-2 text-sm text-slate-500">
+        <a href="https://whc.unesco.org/en/list/1083/" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">UNESCO — Three Parallel Rivers World Heritage Site</a>
+        <a href="https://en.wikipedia.org/wiki/Shangri-La_City" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">Wikipedia — Shangri-La City</a>
+        <a href="https://en.wikipedia.org/wiki/Ganden_Sumtseling_Monastery" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">Wikipedia — Songzanlin Monastery</a>
+        <a href="https://en.wikipedia.org/wiki/Tiger_Leaping_Gorge" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">Wikipedia — Tiger Leaping Gorge</a>
+        <a href="https://en.wikipedia.org/wiki/Pudacuo_National_Park" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">Wikipedia — Pudacuo National Park</a>
+        <a href="https://www.tripadvisor.com/Tourism-g303773-Shangri_La_Yunnan-Vacations.html" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">TripAdvisor — Shangri-La</a>
+      </div>
+      <p class="mt-4 text-xs text-slate-400">All ticket prices, transport schedules, and practical information verified first-hand as of August 2026.</p>
+    </div>
+  </section>
+
+  <Footer />
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Mobile menu toggle (minimal)
+    const btn = document.getElementById('mobile-menu-btn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Simple scroll-to-nav behavior on mobile
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Intersection Observer for nav shadow
+    const header = document.querySelector('header');
+    const observer = new IntersectionObserver(([e]) => {
+      header.classList.toggle('shadow-sm', !e.isIntersecting);
+    }, { threshold: 0 });
+    observer.observe(document.querySelector('#top'));
+  </script>
+  <!-- Live Weather Widget Script -->
+  <script>
+    (function() {
+      var widget = document.getElementById('weather-widget');
+      if (!widget) return;
+      var wmoCodes = {
+        0: { label: 'Clear sky', icon: '&#9728;&#65039;' },
+        1: { label: 'Mainly clear', icon: '&#127780;&#65039;' },
+        2: { label: 'Partly cloudy', icon: '&#9925;' },
+        3: { label: 'Overcast', icon: '&#9729;&#65039;' },
+        45: { label: 'Fog', icon: '&#127787;&#65039;' },
+        48: { label: 'Rime fog', icon: '&#127787;&#65039;' },
+        51: { label: 'Light drizzle', icon: '&#127782;&#65039;' },
+        53: { label: 'Drizzle', icon: '&#127782;&#65039;' },
+        55: { label: 'Heavy drizzle', icon: '&#127783;&#65039;' },
+        61: { label: 'Slight rain', icon: '&#127783;&#65039;' },
+        63: { label: 'Rain', icon: '&#127783;&#65039;' },
+        65: { label: 'Heavy rain', icon: '&#127783;&#65039;' },
+        71: { label: 'Slight snow', icon: '&#127784;&#65039;' },
+        73: { label: 'Snow', icon: '&#10052;&#65039;' },
+        75: { label: 'Heavy snow', icon: '&#10052;&#65039;' },
+        80: { label: 'Rain showers', icon: '&#127783;&#65039;' },
+        95: { label: 'Thunderstorm', icon: '&#9889;' }
+      };
+      function getWeather(code) {
+        return wmoCodes[code] || { label: 'Unknown', icon: '&#127777;&#65039;' };
+      }
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=27.83&longitude=99.70&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=Asia/Shanghai&forecast_days=3')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var c = data.current;
+          var d = data.daily;
+          var now = getWeather(c.weather_code);
+          var days = ['Today', 'Tomorrow', 'Day 3'];
+          var forecastHTML = '';
+          for (var i = 0; i < 3; i++) {
+            var fw = getWeather(d.weather_code[i]);
+            forecastHTML += '<div class="flex-1 text-center px-3 py-3 rounded-xl ' + (i === 0 ? 'bg-emerald-50' : 'bg-slate-50') + '">' +
+              '<p class="text-xs font-semibold text-slate-500 mb-1">' + days[i] + '</p>' +
+              '<p class="text-2xl mb-1">' + fw.icon + '</p>' +
+              '<p class="text-xs text-slate-400">' + fw.label + '</p>' +
+              '<p class="mt-2 text-sm font-bold text-slate-700">' + Math.round(d.temperature_2m_max[i]) + '\u00B0 <span class="text-slate-400 font-medium">' + Math.round(d.temperature_2m_min[i]) + '\u00B0</span></p>' +
+            '</div>';
+          }
+          widget.innerHTML = '<div class="flex flex-col lg:flex-row gap-6">' +
+            '<div class="flex-1 flex items-center gap-6 p-4 rounded-xl bg-slate-50">' +
+              '<div class="text-center"><p class="text-5xl">' + now.icon + '</p><p class="text-xs font-medium text-slate-500 mt-1">' + now.label + '</p></div>' +
+              '<div><p class="text-4xl font-extrabold text-slate-900">' + Math.round(c.temperature_2m) + '\u00B0C</p><p class="text-sm text-slate-500 mt-1">Feels like ' + Math.round(c.apparent_temperature) + '\u00B0C</p></div>' +
+              '<div class="ml-auto space-y-1 text-right"><p class="text-xs text-slate-400">Humidity <span class="font-semibold text-slate-600">' + c.relative_humidity_2m + '%</span></p><p class="text-xs text-slate-400">Wind <span class="font-semibold text-slate-600">' + c.wind_speed_10m + ' km/h</span></p></div>' +
+            '</div>' +
+            '<div class="flex gap-2">' + forecastHTML + '</div>' +
+          '</div><p class="mt-3 text-xs text-slate-400 text-right">Live data from Open-Meteo &middot; Shangri-La, Yunnan</p>';
+        })
+        .catch(function() {
+          widget.innerHTML = '<div class="text-center py-6"><p class="text-sm text-slate-400">Weather data unavailable right now. Please check back later.</p><p class="text-xs text-slate-400 mt-1">Typical Shangri-La conditions: temperatures range from -10\u00B0C (winter nights) to 22\u00B0C (summer days).</p></div>';
+        });
+    })();
+  </script>
+</BaseLayout>

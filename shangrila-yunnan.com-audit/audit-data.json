@@ -1,0 +1,305 @@
+{
+  "summary": {
+    "health_score": 72,
+    "business_type": "Travel / Tourism — Destination Guide & Content Hub",
+    "top_findings": [
+      "All 14 detail-page canonicals point to http://localhost:4321 — this must be fixed before production deployment",
+      "No robots.txt or XML sitemap — search engines have no crawl guidance",
+      "OG image is SVG — will break social sharing previews on Facebook, Twitter, LinkedIn",
+      "Detail pages are orphaned from each other — only link back to homepage",
+      "No llms.txt — AI crawlers cannot efficiently discover or ingest site content"
+    ],
+    "quick_wins": [
+      "Fix canonical URLs in DetailLayout.astro: replace Astro.url.href with production URL",
+      "Generate a robots.txt and sitemap.xml (15 pages — static generation is trivial)",
+      "Replace og-image.svg with a 1200x630 PNG",
+      "Add BreadcrumbList schema to all detail pages (breadcrumb UI already exists)",
+      "Create llms.txt and llms-full.txt for AI crawler discovery",
+      "Add fetchpriority=\"high\" to the hero image for faster LCP"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 66,
+      "what_works": [
+        "Clean URL structure with descriptive paths",
+        "Responsive viewport with mobile-first design",
+        "Light CSS footprint (~45 KB across 2 files)"
+      ],
+      "findings": [
+        {
+          "title": "Detail-page canonicals resolve to localhost",
+          "severity": "Critical",
+          "description": "All 14 detail pages use Astro.url.href which resolves to http://localhost:4321 during build. Google will see wrong canonicals.",
+          "recommendation": "Replace Astro.url.href with 'https://shangri-la-yunnan.com' + Astro.url.pathname in DetailLayout.astro and BaseLayout.astro."
+        },
+        {
+          "title": "Missing robots.txt",
+          "severity": "Critical",
+          "description": "No robots.txt in the dist directory. Crawlers have no guidance.",
+          "recommendation": "Create a robots.txt in /public with Sitemap directive and appropriate allow/disallow rules."
+        },
+        {
+          "title": "Missing XML sitemap",
+          "severity": "Critical",
+          "description": "No sitemap.xml for 15 pages. Search engines rely on sitemaps for discovery.",
+          "recommendation": "Install @astrojs/sitemap and add to astro.config.mjs."
+        },
+        {
+          "title": "No 404 error page",
+          "severity": "High",
+          "description": "Missing 404 page degrades UX for broken links and signals poor quality to search engines.",
+          "recommendation": "Create src/pages/404.astro with navigation back to homepage."
+        },
+        {
+          "title": "No cache or security headers",
+          "severity": "High",
+          "description": "Static hosting has no Cache-Control, X-Content-Type-Options, or HSTS headers configured.",
+          "recommendation": "Configure headers at CDN/hosting level (Cloudflare, Vercel, Netlify)."
+        },
+        {
+          "title": "External render-blocking fonts",
+          "severity": "Medium",
+          "description": "Google Fonts Outfit loads as a blocking stylesheet, delaying first paint.",
+          "recommendation": "Add &display=swap parameter or self-host the font."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 79,
+      "what_works": [
+        "Comprehensive single-page coverage of all traveler needs",
+        "Substantial detail pages (10-15 KB each) with practical information",
+        "Original decision-helping content like Shangri-La vs Tibet comparison table",
+        "Freshness signal: updated August 2026"
+      ],
+      "findings": [
+        {
+          "title": "Detail pages orphaned from each other",
+          "severity": "High",
+          "description": "Every detail page links only to /. No cross-links between related attractions or food pages.",
+          "recommendation": "Add 'Related Attractions' or 'You Might Also Like' sections on each detail page."
+        },
+        {
+          "title": "No author or expertise signals",
+          "severity": "High",
+          "description": "No author name, bio, or About page. E-E-A-T is critical for travel content.",
+          "recommendation": "Add an author byline or About page with credentials."
+        },
+        {
+          "title": "H1 contains HTML formatting tags",
+          "severity": "Medium",
+          "description": "Homepage H1 uses <br> and <span> tags, diluting semantic heading signal.",
+          "recommendation": "Use plain-text H1: 'Shangri-La Yunnan Travel Guide 2026'."
+        },
+        {
+          "title": "Long-scroll single-page trade-off",
+          "severity": "Medium",
+          "description": "131 KB single-page means weather, altitude, transport topics compete for the same title/description.",
+          "recommendation": "Consider spinning out high-volume topics (weather, altitude guide) as standalone pages."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 75,
+      "what_works": [
+        "100% alt text coverage on all images",
+        "Keyword-rich title tags on all pages",
+        "Loading=lazy on below-fold images",
+        "Breadcrumb navigation on detail pages (UI only)"
+      ],
+      "findings": [
+        {
+          "title": "OG image is SVG — breaks social sharing",
+          "severity": "High",
+          "description": "Social platforms (Facebook, Twitter, LinkedIn) do not render SVG OG images. Shares will show blank previews.",
+          "recommendation": "Replace og-image.svg with a 1200x630 PNG image."
+        },
+        {
+          "title": "Title tags are formulaic",
+          "severity": "Medium",
+          "description": "All detail pages use 'Page Title | Shangri-La Yunnan Travel Guide'. Front-loading unique content would improve CTR.",
+          "recommendation": "Restructure to 'Unique Page Title — Key Benefit' format."
+        },
+        {
+          "title": "38 H4 tags — heading hierarchy issues",
+          "severity": "Medium",
+          "description": "Many card titles and labels are marked as H4 when they should be <strong> or <dt>.",
+          "recommendation": "Audit heading hierarchy and reduce H4 count to genuinely important sub-sections."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 83,
+      "what_works": [
+        "5 schema types on homepage: Organization, WebSite, FAQPage, TouristDestination, ItemList",
+        "TouristAttraction schema with GeoCoordinates on all 14 detail pages",
+        "15-well-populated FAQPage items targeting real traveler queries",
+        "Accurate geo coordinates for all locations"
+      ],
+      "findings": [
+        {
+          "title": "Missing BreadcrumbList schema",
+          "severity": "High",
+          "description": "Detail pages render visible breadcrumbs but have no BreadcrumbList structured data.",
+          "recommendation": "Add BreadcrumbList JSON-LD to DetailLayout.astro."
+        },
+        {
+          "title": "No @id cross-referencing between schemas",
+          "severity": "High",
+          "description": "Organization and TouristDestination are not linked via @id, weakening knowledge graph signal.",
+          "recommendation": "Add @id values and cross-reference between schema blocks."
+        },
+        {
+          "title": "SearchAction target may be a dead URL",
+          "severity": "Low",
+          "description": "WebSite schema references /search?q= but no search page exists.",
+          "recommendation": "Implement a search page or remove SearchAction."
+        }
+      ]
+    },
+    {
+      "name": "Performance",
+      "score": 73,
+      "what_works": [
+        "All images in modern .webp format",
+        "CSS hashed for cache-busting",
+        "Minimal client-side JavaScript",
+        "Leaflet map loaded lazily"
+      ],
+      "findings": [
+        {
+          "title": "No server-side compression configured",
+          "severity": "High",
+          "description": "131 KB homepage needs gzip/brotli compression. Without it, TTFB suffers.",
+          "recommendation": "Enable brotli compression at the CDN/hosting layer."
+        },
+        {
+          "title": "Multiple images exceed 200 KB",
+          "severity": "Medium",
+          "description": "Balagezong (384 KB), Daocheng (348 KB), Lijiang (336 KB), Yubeng (308 KB), Tiger Leaping Gorge (268 KB).",
+          "recommendation": "Compress further or serve responsive srcset variants."
+        },
+        {
+          "title": "Hero image missing fetchpriority=high",
+          "severity": "Medium",
+          "description": "The hero image is the LCP element but lacks priority hint.",
+          "recommendation": "Add fetchpriority='high' to the hero img tag."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 56,
+      "what_works": [
+        "Rich structured data makes content highly parseable by AI crawlers",
+        "Factual, structured answers to real traveler questions",
+        "Single-page format allows one-fetch content extraction"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt or llms-full.txt",
+          "severity": "High",
+          "description": "AI crawlers (OpenAI, Anthropic, Google Extended) look for llms.txt to discover content for AI-generated answers.",
+          "recommendation": "Create /llms.txt (index) and /llms-full.txt (full content for AI ingestion)."
+        },
+        {
+          "title": "No robots.txt — cannot direct AI crawlers",
+          "severity": "High",
+          "description": "Without robots.txt, you cannot selectively allow/block GPTBot, Claude-Web, PerplexityBot, or Google-Extended.",
+          "recommendation": "Create robots.txt with AI crawler directives."
+        },
+        {
+          "title": "Factual claims lack inline citations",
+          "severity": "Medium",
+          "description": "Specific claims like 'built in 1679' and '11,613 km²' have no source attribution. AI models prefer cited content.",
+          "recommendation": "Add source citations or links to authoritative references."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 78,
+      "what_works": [
+        "100% alt text coverage (19/19 homepage images)",
+        "All images in .webp format",
+        "18/19 images use loading=lazy where appropriate",
+        "Hero image correctly omits lazy loading"
+      ],
+      "findings": [
+        {
+          "title": "Several images exceed 200 KB",
+          "severity": "Medium",
+          "description": "Balagezong (384 KB), Daocheng (348 KB), Lijiang (336 KB), Yubeng (308 KB) all exceed recommended size.",
+          "recommendation": "Use sharper compression (quality 75-80) or serve responsive srcset variants."
+        },
+        {
+          "title": "No responsive images (srcset)",
+          "severity": "Medium",
+          "description": "All images use fixed src with no srcset for different viewport sizes.",
+          "recommendation": "Generate 400w, 800w, 1200w variants and use srcset/sizes attributes."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Fix canonical URLs in DetailLayout.astro — replace Astro.url.href with production URL",
+          "Create robots.txt with AI crawler directives and Sitemap reference",
+          "Install @astrojs/sitemap and generate sitemap.xml",
+          "Replace og-image.svg with a 1200x630 PNG",
+          "Add fetchpriority='high' to hero image"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Add BreadcrumbList schema to all detail pages",
+          "Add @id cross-referencing between schema blocks",
+          "Create llms.txt and llms-full.txt for AI crawlers",
+          "Build 404 error page",
+          "Add Related Attractions / You Might Also Like cross-links between detail pages",
+          "Compress large images (balagezong, daocheng, lijiang, yubeng, tiger-leaping-gorge)"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Add author byline and About page",
+          "Restructure homepage H1 to plain text",
+          "Add source citations to factual claims",
+          "Create responsive srcset for all images",
+          "Add sameAs links to Organization schema (TripAdvisor, Wikidata, etc.)",
+          "Self-host Google Fonts or add font-display: swap",
+          "Audit and reduce H4 heading count"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Set up Google Search Console and submit sitemap",
+          "Monitor CrUX data for real-user Core Web Vitals",
+          "Deploy at CDN with brotli compression and security headers",
+          "Build external citations (Wikipedia, TripAdvisor, travel media)",
+          "Consider spinning out weather and altitude guide as standalone pages if traffic warrants",
+          "Set up SEO drift monitoring for critical pages"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": null
+  }
+}

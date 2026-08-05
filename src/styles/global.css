@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-accent text-white;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Image Placeholders ── */
+.img-placeholder-hero {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 30%, #475569 60%, #1e293b 100%);
+  background-size: 400% 400%;
+  animation: placeholder-shimmer 4s ease-in-out infinite;
+}
+.img-placeholder-sm {
+  background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 40%, #e2e8f0 80%);
+  background-size: 300% 300%;
+  animation: placeholder-shimmer 4s ease-in-out infinite;
+}
+@keyframes placeholder-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}

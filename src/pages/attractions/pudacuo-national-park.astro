@@ -1,0 +1,116 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+---
+
+<DetailLayout
+  title="Pudacuo National Park"
+  description="Pudacuo National Park, Shangri-La Yunnan: alpine lakes, wetlands, and rare wildlife at 3,500m. Transport, best season, ticket prices, and hiking tips."
+  category="Attraction"
+  image="pudacuo-national-park.webp"
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "name": "Pudacuo National Park",
+    "description": "China's first national park in Shangri-La Yunnan, featuring alpine lakes, wetlands, forests, and rare wildlife including black-necked cranes.",
+    "touristType": ["Nature Lovers", "Photographers", "Hikers"],
+    "publicAccess": true,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Shangri-La",
+      "addressRegion": "Yunnan",
+      "addressCountry": "China"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.78,
+      "longitude": 99.90
+    }
+  }}
+>
+  <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Pudacuo National Park</h1>
+  <p class="mt-3 text-lg leading-relaxed text-slate-500">China's first national park. Pristine alpine lakes, towering old-growth forests, highland wetlands, and rare wildlife at 3,500 meters elevation.</p>
+
+  <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <div class="rounded-xl bg-slate-50 p-3 text-center"><span class="block text-xs text-slate-400">Altitude</span><span class="block mt-0.5 text-sm font-bold text-slate-900">3,500 m</span></div>
+    <div class="rounded-xl bg-slate-50 p-3 text-center"><span class="block text-xs text-slate-400">Time Needed</span><span class="block mt-0.5 text-sm font-bold text-slate-900">4&ndash;6 hrs</span></div>
+    <div class="rounded-xl bg-slate-50 p-3 text-center"><span class="block text-xs text-slate-400">Best Season</span><span class="block mt-0.5 text-sm font-bold text-slate-900">May&ndash;Oct</span></div>
+    <div class="rounded-xl bg-slate-50 p-3 text-center"><span class="block text-xs text-slate-400">Ticket</span><span class="block mt-0.5 text-sm font-bold text-slate-900">100 RMB</span></div>
+  </div>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Overview</h2>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">Pudacuo National Park was established in 2007 as China's first national park under IUCN standards. Spanning over 1,300 square kilometers, it is located 22 km from Shangri-La city center. The park centers around three main areas: <strong>Shudu Lake (属都湖)</strong>, <strong>Bita Lake (碧塔海)</strong>, and the <strong>Militang Alpine Pasture</strong>.</p>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">The park sits in the heart of the Three Parallel Rivers UNESCO World Heritage area. Its ecosystems range from subalpine coniferous forests and rhododendron shrublands to high-altitude wetlands that host over 100 bird species including the rare black-necked crane. In late spring (May&ndash;June), the rhododendrons bloom in waves of pink and white, turning the lake shores into a painter's palette.</p>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">Shudu Lake, the most accessible area, features a 3.3 km wooden boardwalk loop. Bita Lake, slightly more remote, is famous for a phenomenon known as "intoxicated fish" &mdash; when rhododendron petals fall into the water, the fish feed on them and appear momentarily dazed at the surface. Militang is a vast alpine meadow where herds of yaks graze against a backdrop of snow-capped peaks.</p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">How to Get There</h2>
+    <div class="mt-4 space-y-5">
+      <div class="rounded-xl border border-slate-200 p-5">
+        <h3 class="text-base font-bold text-slate-900">Public Bus (Cheapest)</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Take the Pudacuo shuttle bus from <strong>Shangri-La Bus Station</strong> or from the parking lot near <strong>Dukezong Old Town east gate</strong>. Departs at 8:00 AM and 9:30 AM, returns at 3:00 PM and 4:00 PM. Fare is approximately 30 RMB round trip. Journey takes 40&ndash;50 minutes.</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-5">
+        <h3 class="text-base font-bold text-slate-900">Taxi or Ride-Hailing (Most Flexible)</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">A one-way Didi or taxi from Shangri-La city costs <strong>80&ndash;120 RMB</strong> (30&ndash;40 minutes). Arrange a return pickup with your driver beforehand, as finding a taxi at the park exit can be difficult. Many drivers will wait for an additional 100 RMB.</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-5">
+        <h3 class="text-base font-bold text-slate-900">Private Driver or Tour</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Hotels and hostels can arrange a private car for <strong>300&ndash;500 RMB</strong> round trip including waiting time. Half-day organized tours including transport and entrance are widely available at hotels for 250&ndash;400 RMB per person.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Inside the Park &mdash; What to See</h2>
+    <div class="mt-4 grid gap-4 sm:grid-cols-3">
+      <div class="rounded-xl border border-slate-200 p-4"><h4 class="text-sm font-bold text-slate-900">Shudu Lake (属都湖)</h4><p class="mt-2 text-sm leading-relaxed text-slate-600">The main attraction. A 3.3 km wooden boardwalk circles a mirror-like alpine lake. Reflections of spruce forests, seasonal rhododendrons, and grazing yaks. Takes 1.5&ndash;2 hours to walk.</p></div>
+      <div class="rounded-xl border border-slate-200 p-4"><h4 class="text-sm font-bold text-slate-900">Bita Lake (碧塔海)</h4><p class="mt-2 text-sm leading-relaxed text-slate-600">A pristine deep-water lake surrounded by ancient fir forests. Boardwalk trail is 4.2 km. Home to the rare Schizothorax fish. Best in autumn when the larch trees turn gold.</p></div>
+      <div class="rounded-xl border border-slate-200 p-4"><h4 class="text-sm font-bold text-slate-900">Militang Pasture</h4><p class="mt-2 text-sm leading-relaxed text-slate-600">Vast alpine meadow at 3,800m where Tibetan herders graze yaks in summer. Panoramic mountain views. Accessible by park shuttle bus. Great for wide-angle photography.</p></div>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Food &amp; Dining Near the Park</h2>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">There is a basic noodle restaurant at the park exit serving Tibetan-style noodles (15&ndash;25 RMB), fried rice, and yak butter tea. Better dining options are back in Shangri-La city. Pack snacks and water for inside the park &mdash; there are no food vendors on the trails. Tibetan hotpot restaurants in Dukezong Old Town are the perfect post-hike meal.</p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Accommodation Nearby</h2>
+    <p class="mt-4 text-base leading-relaxed text-slate-600">There is no lodging inside Pudacuo National Park. Stay in <strong>Shangri-La city</strong> (22 km away). Dukezong Old Town has the best atmosphere with Tibetan-style guesthouses starting at 150 RMB per night. The new town area near the bus station has modern hotels from 200 RMB.</p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Travel Tips</h2>
+    <ul class="mt-4 space-y-3 text-base leading-relaxed text-slate-600">
+      <li class="flex gap-2"><span class="text-emerald-600 font-bold flex-shrink-0">&rarr;</span> <span><strong>Arrive early.</strong> The park opens at 8:00 AM. Morning light on Shudu Lake is spectacular and you'll beat the tour bus crowds that arrive around 10 AM.</span></li>
+      <li class="flex gap-2"><span class="text-emerald-600 font-bold flex-shrink-0">&rarr;</span> <span>The park shuttle bus connects all three areas. Wait times are 10&ndash;20 minutes between buses. The full circuit including both lakes takes about 5 hours.</span></li>
+      <li class="flex gap-2"><span class="text-emerald-600 font-bold flex-shrink-0">&rarr;</span> <span><strong>Acclimatize first.</strong> Shudu Lake sits at 3,500m. Spend at least one full day in Shangri-La city (3,160m) before visiting to reduce altitude sickness risk.</span></li>
+      <li class="flex gap-2"><span class="text-emerald-600 font-bold flex-shrink-0">&rarr;</span> <span>Wear waterproof shoes regardless of forecast. Boardwalks can be slippery from morning dew and seasonal mist.</span></li>
+      <li class="flex gap-2"><span class="text-emerald-600 font-bold flex-shrink-0">&rarr;</span> <span><strong>Bring binoculars</strong> if you're into birdwatching. Black-necked cranes (Nov&ndash;Mar), ruddy shelducks, and Tibetan snowcocks are commonly seen.</span></li>
+    </ul>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Ticket &amp; Opening Hours</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-sm">
+        <tbody>
+          <tr class="border-b border-slate-100"><td class="px-4 py-3 font-medium text-slate-700 bg-slate-50">Peak Season (Apr&ndash;Oct)</td><td class="px-4 py-3 text-slate-600">100 RMB entrance + 120 RMB shuttle bus</td></tr>
+          <tr class="border-b border-slate-100"><td class="px-4 py-3 font-medium text-slate-700 bg-slate-50">Off-Season (Nov&ndash;Mar)</td><td class="px-4 py-3 text-slate-600">60 RMB entrance + 120 RMB shuttle bus</td></tr>
+          <tr><td class="px-4 py-3 font-medium text-slate-700 bg-slate-50">Hours</td><td class="px-4 py-3 text-slate-600">8:00 AM &ndash; 5:00 PM (last entry 4:00 PM)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="mt-12 rounded-2xl bg-slate-50 p-6">
+    <p class="text-sm font-semibold text-emerald-700">Nearby &raquo;</p>
+    <div class="mt-3 flex flex-wrap gap-2">
+      <a href="/attractions/songzanlin-monastery" class="rounded-full bg-white border border-slate-200 px-4 py-1.5 text-sm text-slate-700 hover:border-emerald-300 hover:text-emerald-700 transition-colors">Songzanlin Monastery</a>
+      <a href="/attractions/napa-lake" class="rounded-full bg-white border border-slate-200 px-4 py-1.5 text-sm text-slate-700 hover:border-emerald-300 hover:text-emerald-700 transition-colors">Napa Lake</a>
+      <a href="/attractions/dukezong-old-town" class="rounded-full bg-white border border-slate-200 px-4 py-1.5 text-sm text-slate-700 hover:border-emerald-300 hover:text-emerald-700 transition-colors">Dukezong Old Town</a>
+    </div>
+  </div>
+</DetailLayout>

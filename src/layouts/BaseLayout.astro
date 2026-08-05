@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+
+const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your Shangri-La Yunnan trip in one place. Top attractions, trip planner, altitude guide, hotel and budget tips.", noindex = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="datePublished" content="2024-01-01" />
+  <meta name="dateModified" content="2026-08-05" />
+  <link rel="alternate" hreflang="x-default" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://shangri-la-yunnan.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://shangri-la-yunnan.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://shangri-la-yunnan.com/og-image.png" />
+  {!noindex && <link rel="canonical" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />}
+
+  <!-- Organization + WebSite Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Shangri-La Guide",
+    "url": "https://shangri-la-yunnan.com",
+    "description": "Complete Shangri-La Yunnan travel guide and destination hub.",
+    "logo": "https://shangri-la-yunnan.com/favicon.svg"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Shangri-La Guide",
+    "url": "https://shangri-la-yunnan.com"
+  }
+  </script>
+
+  <script is:inline>
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body class="min-h-screen bg-[var(--color-surface)] text-[var(--color-ink)] antialiased">
+  <slot />
+</body>
+</html>

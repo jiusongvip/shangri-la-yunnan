@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found — Shangri-La Yunnan Travel Guide"
+  description="The page you are looking for does not exist. Return to the Shangri-La Yunnan travel guide homepage."
+  noindex={true}
+>
+  <main class="pt-16">
+    <div class="min-h-[80vh] flex items-center justify-center">
+      <div class="text-center px-4">
+        <p class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-600 mb-4">404 Error</p>
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-4">Page Not Found</h1>
+        <p class="text-base text-slate-500 max-w-md mx-auto mb-8">The page you are looking for might have been moved or does not exist.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a href="/" class="inline-flex h-11 items-center rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white hover:bg-emerald-500">Back to Home</a>
+          <a href="/#explore" class="inline-flex h-11 items-center rounded-full border border-slate-300 px-6 text-sm font-semibold text-slate-700 hover:bg-slate-50">View Attractions</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
