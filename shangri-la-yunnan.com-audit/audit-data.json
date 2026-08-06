@@ -1,0 +1,268 @@
+{
+  "summary": {
+    "health_score": 82,
+    "business_type": "Travel Guide / Destination Hub",
+    "pages_analyzed": 17,
+    "top_findings": [
+      "Critical: snub-nosed-monkey.png = 2.34 MB (92% reducible)",
+      "High: 3 images exceed 250 KB threshold",
+      "High: Google Fonts external request blocks rendering",
+      "High: Sitemap missing lastmod/priority/changefreq metadata"
+    ],
+    "quick_wins": [
+      "Convert PNG to WebP (5 min, saves 2.15 MB)",
+      "Recompress 3 oversized WebP images (10 min)",
+      "Add decoding='async' to lazy images (5 min)",
+      "Create llms.txt for AI crawler discovery (10 min)"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 85,
+      "what_works": [
+        "robots.txt properly formatted with AI crawler directives",
+        "Sitemap auto-generated with 17 correct canonical URLs",
+        "trailingSlash:never prevents duplicate URL variants",
+        "Zero-JS static HTML, fully crawlable",
+        "HTTPS enforced site-wide",
+        "404 page returns noindex with useful nav links"
+      ],
+      "findings": [
+        {
+          "title": "Sitemap missing lastmod/priority/changefreq",
+          "severity": "Critical",
+          "description": "sitemap-index.xml and sitemap-0.xml lack date and priority metadata. Google uses these signals to prioritize crawling and freshness evaluation.",
+          "recommendation": "Customize @astrojs/sitemap with serialize option to inject lastmod dates and priority values per URL pattern."
+        },
+        {
+          "title": "Custom meta date tags not recognized by Google",
+          "severity": "Medium",
+          "description": "meta[name=datePublished] and meta[name=dateModified] are custom attributes that Googlebot ignores. Dates must be in structured data or visible page text.",
+          "recommendation": "Move datePublished/dateModified into JSON-LD schema blocks or ensure visible 'Last updated' text exists."
+        },
+        {
+          "title": "Organization.sameAs links are reference pages not social profiles",
+          "severity": "Low",
+          "description": "sameAs array contains TripAdvisor, Wikidata, Wikipedia URLs which are third-party reference pages, not the brand's official social media profiles.",
+          "recommendation": "Replace with actual social profiles or remove sameAs if none exist."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 82,
+      "what_works": [
+        "25+ content modules covering all traveler needs",
+        "Strong E-E-A-T signals: team visit badge, Person schema, 200+ days in Yunnan",
+        "Comprehensive FAQ (18 questions with detailed answers)",
+        "Practical planning tools: itineraries, weather table, altitude guide",
+        "First-hand experience markers throughout"
+      ],
+      "findings": [
+        {
+          "title": "No user engagement mechanism (comments/reviews)",
+          "severity": "Medium",
+          "description": "Competitor Fabio Nodari has 18+ real comments building social proof and user engagement signals. Comments are a Google ranking signal for informational content.",
+          "recommendation": "Add Giscus (GitHub Discussions-based, no tracking) or Disqus commenting system."
+        },
+        {
+          "title": "No visible author byline despite Person schema",
+          "severity": "Low",
+          "description": "Person schema exists in JSON-LD but user cannot see author credentials, reducing perceived E-E-A-T.",
+          "recommendation": "Add short 'Written by Shangri-La Guide Team, 200+ days in Yunnan' line near hero or About page."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 88,
+      "what_works": [
+        "Title tag: 43 chars with year and primary keyword",
+        "Meta description: 154 chars, compelling with selling points",
+        "Single h1 with clear keyword targeting",
+        "Clean heading hierarchy (h1 → 16 h2s, no skips)",
+        "Canonical URLs correct on all 17 pages",
+        "hreflang=x-default set to English",
+        "Internal link matrix (16 links) covering all sections"
+      ],
+      "findings": [
+        {
+          "title": "BreadcrumbList schema without visible breadcrumb UI",
+          "severity": "Medium",
+          "description": "JSON-LD BreadcrumbList exists but users see no breadcrumb navigation. Google may flag schema/page mismatch or ignore the breadcrumb markup.",
+          "recommendation": "Add visible breadcrumb component or remove unused schema."
+        },
+        {
+          "title": "Sub-pages lack h2 section headings",
+          "severity": "Medium",
+          "description": "Attraction and food pages only have h1 (item name). Well-structured h2s would improve on-page SEO signals.",
+          "recommendation": "Add h2 subsections (Overview, Getting There, Tips) to sub-page templates."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 90,
+      "what_works": [
+        "6 distinct schema types on homepage (WebPage, BreadcrumbList, Organization, WebSite, FAQPage, TouristDestination, ItemList)",
+        "Person schema on About page with knowsAbout and affiliation",
+        "All JSON-LD valid with no syntax errors",
+        "FAQ answers are substantive (3-5 sentences each)",
+        "TouristDestination includes geo coordinates"
+      ],
+      "findings": [
+        {
+          "title": "Schemas not consolidated with @graph",
+          "severity": "Medium",
+          "description": "Multiple separate script[type=ld+json] blocks instead of single @graph array. Both work but @graph is cleaner.",
+          "recommendation": "Consolidate all page schemas into one @graph array."
+        },
+        {
+          "title": "Attraction sub-pages lack TouristAttraction schema",
+          "severity": "Medium",
+          "description": "9 attraction detail pages have no page-specific structured data beyond BaseLayout defaults. TouristAttraction schema enables rich results.",
+          "recommendation": "Add TouristAttraction JSON-LD with geo, photo, opening hours to each attraction page."
+        },
+        {
+          "title": "Food sub-pages lack Recipe/FoodEstablishment schema",
+          "severity": "Medium",
+          "description": "6 food pages could benefit from structured data for food-related rich results.",
+          "recommendation": "Add food schema or merge food content into homepage to consolidate authority."
+        }
+      ]
+    },
+    {
+      "name": "Performance / Core Web Vitals",
+      "score": 65,
+      "what_works": [
+        "Static HTML, zero client JS",
+        "Hero image uses fetchpriority='high'",
+        "WebP format for 20/21 images",
+        "Explicit width/height on all images for CLS prevention"
+      ],
+      "findings": [
+        {
+          "title": "2.34 MB PNG image destroys LCP",
+          "severity": "Critical",
+          "description": "snub-nosed-monkey.png is 2.34 MB. Converting to WebP at quality 80 would yield ~180 KB — a 92% reduction.",
+          "recommendation": "Convert to WebP immediately using sharp or ImageMagick."
+        },
+        {
+          "title": "Google Fonts blocks text rendering",
+          "severity": "High",
+          "description": "External fonts.googleapis.com CSS blocks first text paint. Font download adds ~200ms to FCP on slow connections.",
+          "recommendation": "Self-host Outfit font files with font-display:swap."
+        },
+        {
+          "title": "No decoding='async' on lazy images",
+          "severity": "High",
+          "description": "Images with loading='lazy' still decode on main thread. decoding='async' offloads decode work.",
+          "recommendation": "Add decoding='async' to all lazy-loaded img tags."
+        },
+        {
+          "title": "CSS bundles are separate requests",
+          "severity": "Medium",
+          "description": "Two CSS files (~46 KB total) generate two network requests. Inlining critical above-fold CSS would improve FCP.",
+          "recommendation": "Use Astro's is:inline for above-fold CSS."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 82,
+      "what_works": [
+        "AI crawlers (GPTBot, Claude-Web, Google-Extended, PerplexityBot) explicitly allowed",
+        "All content static HTML — no JS rendering needed",
+        "FAQ schema provides structured Q&A for AI extraction",
+        "Comprehensive content depth signals increase citation likelihood"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt for AI crawler discovery",
+          "severity": "Medium",
+          "description": "llms.txt is the emerging standard for AI crawler content indexing. Without it, AI crawlers discover pages through normal crawling which may miss key content.",
+          "recommendation": "Create llms.txt at root listing key pages with descriptions per llmstxt.org spec."
+        },
+        {
+          "title": "No llms-full.txt for AI training datasets",
+          "severity": "Medium",
+          "description": "Full-text markdown export enables AI models to use content in training data with proper attribution.",
+          "recommendation": "Generate llms-full.txt with all page content in markdown format."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 70,
+      "what_works": [
+        "20/21 images in WebP format",
+        "Descriptive alt text (12-18 words) on all images",
+        "loading='lazy' on below-fold images",
+        "fetchpriority='high' on hero image"
+      ],
+      "findings": [
+        {
+          "title": "1 PNG image (2.34 MB) among all-WebP site",
+          "severity": "Critical",
+          "description": "snub-nosed-monkey.png is the sole PNG in a WebP-optimized site. 92% reducible.",
+          "recommendation": "Convert to WebP."
+        },
+        {
+          "title": "No responsive srcset for images",
+          "severity": "High",
+          "description": "All users download full-size images regardless of viewport. Mobile users on 3G pay for desktop-size images.",
+          "recommendation": "Add srcset with 400w/800w/1200w variants using Astro Image or picture elements."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Today",
+        "items": [
+          "Convert snub-nosed-monkey.png to WebP",
+          "Recompress 3 oversized WebP images",
+          "Add decoding='async' to lazy images",
+          "Delete unused og-image.png"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "This Week",
+        "items": [
+          "Self-host Google Fonts (Outfit)",
+          "Add lastmod/priority to sitemap",
+          "Add TouristAttraction schema to 9 pages",
+          "Create llms.txt + llms-full.txt"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "This Month",
+        "items": [
+          "Add visible breadcrumb navigation",
+          "Add commenting system (Giscus/Disqus)",
+          "Restructure sub-page headings",
+          "Add responsive srcset to key images"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Set up Google Search Console",
+          "Monitor Core Web Vitals in CrUX",
+          "Track keyword rankings",
+          "Set up SEO drift baseline"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": null
+  }
+}
