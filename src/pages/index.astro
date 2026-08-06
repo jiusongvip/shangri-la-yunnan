@@ -12,14 +12,15 @@ const quickFacts = [
 ];
 
 const mustSeeSpots = [
-  { slug: "pudacuo-national-park", name: "Pudacuo National Park", image: "pudacuo-national-park.webp", stars: 5, tag: "Nature", altitude: "3,500 m", time: "4-6 hrs", best: "May-Oct", ticket: "100 RMB", desc: "Pristine alpine lakes, wetlands, and forests. Home to rare black-necked cranes. The Shudu Lake trail offers the most photogenic views in Shangri-La." },
-  { slug: "songzanlin-monastery", name: "Songzanlin Monastery", image: "songzanlin-monastery.webp", stars: 5, tag: "Culture", altitude: "3,300 m", time: "2-3 hrs", best: "All year", ticket: "115 RMB", desc: "The largest Tibetan Buddhist monastery in Yunnan, built in 1679. Often called the Little Potala Palace. Morning chanting ceremonies at 6:30 AM are open to visitors." },
-  { slug: "dukezong-old-town", name: "Dukezong Old Town", image: "dukezong-old-town.webp", stars: 4, tag: "History", altitude: "3,300 m", time: "2-4 hrs", best: "All year", ticket: "Free", desc: "A 1,300-year-old Tibetan quarter rebuilt after the 2014 fire. Home to the world's largest prayer wheel (21m tall). Best explored at dusk when lanterns light up the lanes." },
-  { slug: "napa-lake", name: "Napa Lake", image: "napa-lake.webp", stars: 4, tag: "Nature", altitude: "3,266 m", time: "2-4 hrs", best: "May-Oct", ticket: "60 RMB", desc: "A seasonal highland lake that transforms into a vast grassland in dry months. Yak and horse grazing with snow-capped mountain backdrops. Stunning at sunset." },
-  { slug: "tiger-leaping-gorge", name: "Tiger Leaping Gorge", image: "tiger-leaping-gorge.webp", stars: 5, tag: "Adventure", altitude: "1,800-2,670 m", time: "1-2 days", best: "Apr-Jun, Sep-Oct", ticket: "65 RMB", desc: "One of the deepest river gorges in the world. The high trail is a world-class 2-day trek with guesthouses along the route. Day trips to the upper gorge are also possible." },
-  { slug: "meili-snow-mountain", name: "Meili Snow Mountain", image: "meili-snow-mountain.webp", stars: 5, tag: "Nature", altitude: "6,740 m", time: "1-2 days", best: "Oct-May", ticket: "Free (viewing)", desc: "Sacred to Tibetan Buddhists, the Meili range includes Kawagebo, Yunnan's highest peak. The sunrise view from Feilai Temple is one of China's most iconic landscapes." },
-  { slug: "balagezong-canyon", name: "Balagezong Canyon", image: "balagezong-canyon.webp", stars: 4, tag: "Nature", altitude: "2,200-4,000 m", time: "4-6 hrs", best: "May-Oct", ticket: "170 RMB", desc: "A dramatic canyon with hanging coffins, Tibetan villages, and a glass skywalk. Less touristy than Tiger Leaping Gorge but equally impressive." },
-  { slug: "baishuitai-terraces", name: "Baishuitai Terraces", image: "baishuitai-terraces.webp", stars: 4, tag: "Nature", altitude: "2,380 m", time: "2-3 hrs", best: "Mar-May", ticket: "30 RMB", desc: "Natural travertine terraces nicknamed China's Pamukkale. Spring-fed mineral pools cascade down a hillside. Best in morning light when the pools are most reflective." },
+  { slug: "pudacuo-national-park", name: "Pudacuo National Park", image: "pudacuo-national-park.webp", stars: 5, tag: "Nature", altitude: "3,500 m", time: "4-6 hrs", best: "May-Oct", ticket: "100 RMB", alt: "Pudacuo National Park pristine alpine lake Shudu Lake with forested shoreline crystal blue water and mountain reflections in Shangri-La Yunnan", desc: "Pristine alpine lakes, wetlands, and forests. Home to rare black-necked cranes. The Shudu Lake trail offers the most photogenic views in Shangri-La." },
+  { slug: "songzanlin-monastery", name: "Songzanlin Monastery", image: "songzanlin-monastery.webp", stars: 5, tag: "Culture", altitude: "3,300 m", time: "2-3 hrs", best: "All year", ticket: "115 RMB", alt: "Songzanlin Monastery golden roof Tibetan Buddhist temple complex at 3300 meters nicknamed Little Potala Palace in Shangri-La Yunnan", desc: "The largest Tibetan Buddhist monastery in Yunnan, built in 1679. Often called the Little Potala Palace. Morning chanting ceremonies at 6:30 AM are open to visitors." },
+  { slug: "dukezong-old-town", name: "Dukezong Old Town", image: "dukezong-old-town.webp", stars: 4, tag: "History", altitude: "3,300 m", time: "2-4 hrs", best: "All year", ticket: "Free", alt: "Dukezong Old Town ancient cobblestone streets with traditional Tibetan wooden buildings and giant golden prayer wheel at dusk in Shangri-La Yunnan", desc: "A 1,300-year-old Tibetan quarter rebuilt after the 2014 fire. Home to the world's largest prayer wheel (21m tall). Best explored at dusk when lanterns light up the lanes." },
+  { slug: "napa-lake", name: "Napa Lake", image: "napa-lake.webp", stars: 4, tag: "Nature", altitude: "3,266 m", time: "2-4 hrs", best: "May-Oct", ticket: "60 RMB", alt: "Napa Lake seasonal alpine wetland with grazing yaks horses and snow-capped mountain backdrop under golden sunset light in Shangri-La Yunnan", desc: "A seasonal highland lake that transforms into a vast grassland in dry months. Yak and horse grazing with snow-capped mountain backdrops. Stunning at sunset." },
+  { slug: "tiger-leaping-gorge", name: "Tiger Leaping Gorge", image: "tiger-leaping-gorge.webp", stars: 5, tag: "Adventure", altitude: "1,800-2,670 m", time: "1-2 days", best: "Apr-Jun, Sep-Oct", ticket: "65 RMB", alt: "Tiger Leaping Gorge dramatic deep river canyon with Jade Dragon Snow Mountain towering above Jinsha River rapids in Yunnan China", desc: "One of the deepest river gorges in the world. The high trail is a world-class 2-day trek with guesthouses along the route. Day trips to the upper gorge are also possible." },
+  { slug: "meili-snow-mountain", name: "Meili Snow Mountain", image: "meili-snow-mountain.webp", stars: 5, tag: "Nature", altitude: "6,740 m", time: "1-2 days", best: "Oct-May", ticket: "Free (viewing)", alt: "Meili Snow Mountain sacred Kawagebo peak at 6740 meters glowing golden orange at sunrise viewed from Feilai Temple in Yunnan China", desc: "Sacred to Tibetan Buddhists, the Meili range includes Kawagebo, Yunnan's highest peak. The sunrise view from Feilai Temple is one of China's most iconic landscapes." },
+  { slug: "balagezong-canyon", name: "Balagezong Canyon", image: "balagezong-canyon.webp", stars: 4, tag: "Nature", altitude: "2,200-4,000 m", time: "4-6 hrs", best: "May-Oct", ticket: "170 RMB", alt: "Balagezong Grand Canyon dramatic cliffs with hanging coffins and traditional Tibetan village nestled in narrow valley in Shangri-La Yunnan", desc: "A dramatic canyon with hanging coffins, Tibetan villages, and a glass skywalk. Less touristy than Tiger Leaping Gorge but equally impressive." },
+  { slug: "baishuitai-terraces", name: "Baishuitai Terraces", image: "baishuitai-terraces.webp", stars: 4, tag: "Nature", altitude: "2,380 m", time: "2-3 hrs", best: "Mar-May", ticket: "30 RMB", alt: "Baishuitai natural travertine terraces with mineral-rich turquoise pools cascading down white limestone hillside in morning light in Shangri-La Yunnan", desc: "Natural travertine terraces nicknamed China's Pamukkale. Spring-fed mineral pools cascade down a hillside. Best in morning light when the pools are most reflective." },
+  { slug: "haba-snow-mountain", name: "Haba Snow Mountain", image: "haba-snow-mountain.webp", stars: 4, tag: "Adventure", altitude: "5,396 m", time: "2-3 days", best: "Apr-Jun, Sep-Nov", ticket: "Guide required", alt: "Haba Snow Mountain 5396 meter peak with glaciers and mountaineers on summit ridge overlooking Jade Dragon Snow Mountain in Shangri-La Yunnan", desc: "One of China's most accessible 5,000m+ peaks. The 2-day summit climb is achievable for fit beginners with a guide. Panoramic views of Jade Dragon Snow Mountain and the Tiger Leaping Gorge from the top." },
 ];
 
 const itineraries = [
@@ -103,6 +104,7 @@ const soloTravelTips = [
 // ==== UPDATED: navSections with new sections ====
 const navSections = [
   { id: "explore", label: "Explore" },
+  { id: "wildlife", label: "Wildlife" },
   { id: "vs-tibet", label: "Vs Tibet" },
   { id: "plan", label: "Plan" },
   { id: "weather", label: "Weather" },
@@ -112,7 +114,9 @@ const navSections = [
   { id: "costs", label: "Costs" },
   { id: "china-entry", label: "China Entry" },
   { id: "food", label: "Food" },
+  { id: "tips", label: "Tips" },
   { id: "solo", label: "Solo" },
+  { id: "hidden-gems", label: "Hidden Gems" },
   { id: "faq", label: "FAQ" },
 ];
 
@@ -162,7 +166,12 @@ const navSections = [
     "addressLocality": "Shangri-La",
     "addressRegion": "Yunnan",
     "addressCountry": "CN"
-  }
+  },
+  "sameAs": [
+    "https://www.tripadvisor.com/Tourism-g303773-Shangri_La_Yunnan-Vacations.html",
+    "https://www.wikidata.org/wiki/Q1207070",
+    "https://en.wikipedia.org/wiki/Shangri-La,_Yunnan"
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -216,8 +225,9 @@ const navSections = [
         <div class="grid gap-10 lg:grid-cols-[1fr_360px] items-start">
           <div class="max-w-2xl">
             <p class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-400 mb-5">Yunnan, China · 3,160m altitude</p>
-            <h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.04]">Shangri-La<br/><span class="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Travel Guide</span></h1>
-            <p class="mt-5 max-w-lg text-lg leading-relaxed text-slate-300">Everything you need to plan the perfect trip — attractions, weather, altitude guide, hotels, transport, costs, food, and FAQs. All on one page.</p>
+            <h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.04]">Shangri-La Yunnan Travel Guide 2026</h1>
+            <p class="mt-3 text-base font-medium text-emerald-400">Complete Travel Hub — All You Need on One Page</p>
+            <p class="mt-4 max-w-lg text-lg leading-relaxed text-slate-300">Everything you need to plan the perfect trip — attractions, weather, altitude guide, hotels, transport, costs, food, and FAQs. All on one page.</p>
             <div class="mt-7 flex flex-wrap gap-3">
               <a href="#explore" class="inline-flex h-11 items-center rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white transition-all hover:bg-emerald-500 active:scale-[0.98]">Explore attractions</a>
               <a href="#plan" class="inline-flex h-11 items-center rounded-full border border-slate-600 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 active:scale-[0.98]">View itineraries</a>
@@ -237,7 +247,7 @@ const navSections = [
             </dl>
             <div class="mt-4 pt-3 border-t border-slate-700/50 flex items-center gap-2 text-[11px] text-slate-400">
               <span class="flex h-2 w-2 rounded-full bg-emerald-400"></span>
-              Updated August 2026
+              Our team visited Shangri-La · Updated August 2026
             </div>
           </div>
         </div>
@@ -322,7 +332,7 @@ const navSections = [
           {mustSeeSpots.map((spot, i) => (
             <details class={`group rounded-2xl border border-slate-200 bg-white transition-all [&[open]]:border-emerald-200 [&[open]]:shadow-lg [&[open]]:shadow-slate-200/50 ${i >= 4 ? '' : ''}`}>
               <summary class="flex cursor-pointer list-none items-start gap-3 p-5 text-left">
-                <img src={`/images/${spot.image}`} alt={`${spot.name} Shangri-La Yunnan`} class="w-16 h-16 rounded-lg flex-shrink-0 object-cover" width="64" height="64" loading="lazy" />
+                <img src={`/images/${spot.image}`} alt={spot.alt || `${spot.name} Shangri-La Yunnan`} class="w-16 h-16 rounded-lg flex-shrink-0 object-cover" width="64" height="64" loading="lazy" />
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-1">
                     <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">{spot.tag}</span>
@@ -348,6 +358,29 @@ const navSections = [
               </div>
             </details>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== YUNNAN SNUB-NOSED MONKEY ===== -->
+    <section id="wildlife" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-2 items-center">
+          <div>
+            <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Wildlife</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Yunnan Snub-Nosed Monkey</h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600">One of the world's rarest primates lives just a few hours from Shangri-La. The Yunnan snub-nosed monkey (<em>Rhinopithecus bieti</em>) is found nowhere else on Earth — only in the high-altitude forests of northwest Yunnan and southeast Tibet, between 3,000 and 4,500 meters.</p>
+            <p class="mt-3 text-base leading-relaxed text-slate-600">With fewer than <strong>3,000 individuals</strong> remaining in the wild, these monkeys are critically endangered. Their distinctive upturned nose, pink lips, and thick golden fur make them one of the most photogenic primates in the world. Seeing them in their natural habitat is a wildlife experience that rivals Africa's mountain gorillas.</p>
+            <div class="mt-5 space-y-2">
+              <div class="flex items-start gap-2 text-sm text-slate-600"><span class="text-emerald-600 font-bold mt-0.5">→</span> <span><strong>Where:</strong> Tacheng Snub-Nosed Monkey National Park (塔城滇金丝猴国家公园), about 3 hours drive south of Shangri-La.</span></div>
+              <div class="flex items-start gap-2 text-sm text-slate-600"><span class="text-emerald-600 font-bold mt-0.5">→</span> <span><strong>Best time:</strong> Early morning (monkeys descend from the mountain around 8-9 AM for feeding). May-October offers the easiest access; winter snow can make roads difficult.</span></div>
+              <div class="flex items-start gap-2 text-sm text-slate-600"><span class="text-emerald-600 font-bold mt-0.5">→</span> <span><strong>Ticket:</strong> 100 RMB. Park rangers lead small groups to observation points about a 15-minute walk from the entrance.</span></div>
+              <div class="flex items-start gap-2 text-sm text-slate-600"><span class="text-emerald-600 font-bold mt-0.5">→</span> <span><strong>Tip:</strong> Combine with a visit to the Lisu minority villages in the same valley. The area around Tacheng is a beautiful off-the-beaten-path detour from the Shangri-La-Lijiang route.</span></div>
+            </div>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-slate-200">
+            <img src="/images/snub-nosed-monkey.png" alt="Yunnan snub-nosed monkey Rhinopithecus bieti in the wild at Tacheng National Park near Shangri-La" class="w-full h-full object-cover aspect-[4/3]" width="800" height="600" loading="lazy" />
+          </div>
         </div>
       </div>
     </section>
@@ -777,15 +810,16 @@ const navSections = [
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { slug: "yak-butter-tea", title: "Yak Butter Tea", image: "yak-butter-tea.webp", desc: "Salty, rich, and energizing. Made from yak butter, tea leaves, and salt churned together. An acquired taste but central to Tibetan hospitality. Served in every household and monastery." },
-            { slug: "tsampa", title: "Tsampa", image: "tsampa.webp", desc: "Roasted barley flour mixed with butter tea into a dough-like consistency. The staple food of Tibetan nomads. High in energy, perfect for high-altitude trekking." },
-            { slug: "yak-hotpot", title: "Yak Hotpot", image: "yak-hotpot.webp", desc: "Tender yak meat simmered in a spicy broth with local vegetables and mushrooms. Best enjoyed on cold evenings. Try at local restaurants in the old town." },
-            { slug: "matsutake-mushrooms", title: "Matsutake Mushrooms", image: "matsutake-mushrooms.webp", desc: "Shangri-La is famous for wild matsutake mushrooms (July-September). Grilled, in hotpot, or stir-fried. A seasonal delicacy prized in Japan and exported worldwide." },
-            { slug: "tibetan-barley-wine", title: "Tibetan Barley Wine", image: "tibetan-barley-wine.webp", desc: "A mild, slightly sour fermented barley drink served warm. Lower alcohol than grape wine. Offered as a welcome drink in Tibetan homes and restaurants." },
-            { slug: "morning-chanting", title: "Morning Chanting", image: "morning-chanting.webp", desc: "At Songzanlin Monastery, monks gather for chanting at 6:30 AM daily. Visitors are welcome to observe from the sides. A profound cultural experience. Dress respectfully, no photos during ceremony." },
+            { slug: "yak-butter-tea", title: "Yak Butter Tea", image: "yak-butter-tea.webp", alt: "Traditional Tibetan yak butter tea being churned in wooden bowl with salt and tea leaves in Shangri-La Yunnan", desc: "Salty, rich, and energizing. Made from yak butter, tea leaves, and salt churned together. An acquired taste but central to Tibetan hospitality. Served in every household and monastery." },
+            { slug: "tsampa", title: "Tsampa", image: "tsampa.webp", alt: "Tsampa roasted highland barley flour mixed with butter tea into dough being prepared by Tibetan hands in Shangri-La Yunnan", desc: "Roasted barley flour mixed with butter tea into a dough-like consistency. The staple food of Tibetan nomads. High in energy, perfect for high-altitude trekking." },
+            { slug: "yak-hotpot", title: "Yak Hotpot", image: "yak-hotpot.webp", alt: "Yak meat hotpot simmering in spicy broth with local vegetables and mushrooms in traditional copper pot Shangri-La Yunnan", desc: "Tender yak meat simmered in a spicy broth with local vegetables and mushrooms. Best enjoyed on cold evenings. Try at local restaurants in the old town." },
+            { slug: "matsutake-mushrooms", title: "Matsutake Mushrooms", image: "matsutake-mushrooms.webp", alt: "Fresh wild matsutake mushrooms from Shangri-La Yunnan forests arranged on wooden board ready for cooking", desc: "Shangri-La is famous for wild matsutake mushrooms (July-September). Grilled, in hotpot, or stir-fried. A seasonal delicacy prized in Japan and exported worldwide." },
+            { slug: "tibetan-barley-wine", title: "Tibetan Barley Wine", image: "tibetan-barley-wine.webp", alt: "Traditional Tibetan highland barley wine served warm in ceramic cup at Tibetan home in Shangri-La Yunnan", desc: "A mild, slightly sour fermented barley drink served warm. Lower alcohol than grape wine. Offered as a welcome drink in Tibetan homes and restaurants." },
+            { slug: "morning-chanting", title: "Morning Chanting", image: "morning-chanting.webp", alt: "Monks in burgundy robes gathered for morning chanting ceremony inside Songzanlin Monastery prayer hall Shangri-La Yunnan", desc: "At Songzanlin Monastery, monks gather for chanting at 6:30 AM daily. Visitors are welcome to observe from the sides. A profound cultural experience. Dress respectfully, no photos during ceremony." },
+            { slug: "tibetan-toast-feast", title: "Tibetan Toast Feast & Bonfire", image: "tibetan-barley-wine.webp", alt: "Tibetan toast feast with yak meat platters highland barley wine and bonfire circle dancing at traditional Tibetan house Shangri-La Yunnan", desc: "A traditional Tibetan dinner held in a historic Tibetan house (土司宴). Endless platters of yak meat, highland barley wine (青稞酒) flowing freely, and live Tibetan singing and dancing. The night ends with a bonfire circle dance outside — locals and travelers dancing together under the stars. Book through your hotel or guesthouse (about 160 RMB per person)." },
           ].map(item => (
             <div class="rounded-2xl border border-slate-200 bg-white p-5">
-              <img src={`/images/${item.image}`} alt={`${item.title} Shangri-La Yunnan`} class="w-full h-32 rounded-xl mb-3 object-cover" width="400" height="128" loading="lazy" />
+              <img src={`/images/${item.image}`} alt={item.alt || `${item.title} Shangri-La Yunnan`} class="w-full h-32 rounded-xl mb-3 object-cover" width="400" height="128" loading="lazy" />
               <p class="text-base font-bold text-slate-900">{item.title}</p>
               <p class="mt-2 text-sm leading-relaxed text-slate-500">{item.desc}</p>
               <a href={`/food/${item.slug}`} class="mt-3 inline-flex items-center gap-1 rounded-lg text-sm font-medium text-emerald-600 hover:text-emerald-700 transition-colors">Learn More <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
@@ -813,6 +847,11 @@ const navSections = [
             { title: "Respect monastery etiquette", body: "Walk clockwise around stupas and prayer wheels. Do not point your feet at Buddha statues. Ask before photographing monks. Remove hats inside temples." },
             { title: "The prayer wheel ritual", body: "At Dukezong's giant prayer wheel, join locals in spinning it clockwise. Tradition says 3, 7, or 108 rotations bring blessings. A memorable way to connect with local culture." },
             { title: "Download offline maps and translation", body: "Cell signal can be spotty outside town. Download offline Google Maps or Baidu Maps. A translation app (Google Translate or Pleco) is essential as English is limited." },
+            { title: "Electric bikes can't complete the Napa Lake loop", body: "Shops in the old town rent electric scooters, but by the time you reach Napa Lake, your battery is already 1/4 drained. You will not have enough charge to circle the entire grassland. Hire a driver (200-300 RMB for 2-3 hours) instead — they can stop wherever you want for photos." },
+            { title: "Drones are prohibited in Shangri-La", body: "Shangri-La city and Napa Lake are too close to Diqing Airport. Flying a drone is strictly prohibited and can result in confiscation or fines. Leave your drone at home or check with local authorities before flying anywhere in the prefecture." },
+            { title: "Buy oxygen from hospitals, not street vendors", body: "Portable oxygen canisters (40-100 RMB) are sold everywhere, but quality varies wildly. The ones sold at street stalls and tourist shops often contain lower-purity oxygen. Buy from hospital pharmacies or reputable clinics for reliable quality. Carry one as backup even if you feel fine." },
+            { title: "Pudacuo bus: 8:30 AM and 9:30 AM from the bus station", body: "Public buses to Pudacuo National Park depart from Shangri-La Bus Station at 8:30 AM and 9:30 AM daily. Return buses leave Pudacuo at 3:00 PM and 4:00 PM. The fare is 30 RMB one way (40-minute ride). Buy tickets at the station counter — no online booking needed. If you miss the bus, shared taxis at the station gate charge 50-60 RMB per person." },
+            { title: "Eat at Flying Tiger Restaurant for Yunnan-Tibetan fusion", body: "Flying Tiger Restaurant (飞虎餐厅) in Dukezong Old Town is named after the WWII American Volunteer Group pilots who flew the Hump route over the Himalayas. The rooftop terrace has one of the best views of the giant prayer wheel. Menu highlights: yak burger (48 RMB), wild mushroom risotto (58 RMB), and Tibetan-style pizza (55 RMB). English menu available. Go at sunset for the best terrace experience." },
           ].map(tip => (
             <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
               <p class="text-sm font-bold text-slate-900">{tip.title}</p>
@@ -842,6 +881,59 @@ const navSections = [
         </div>
       </div>
     </section>
+
+    <!-- ===== BEYOND THE MAIN ATTRACTIONS ===== -->
+    <section id="hidden-gems" class="bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14">
+          <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Hidden Gems</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Beyond the Main Attractions</h2>
+          <p class="mt-3 max-w-xl text-base leading-relaxed text-slate-500">Three more places that most guidebooks miss — a monastery rivaling Songzanlin, a one-of-a-kind pagoda, and the beating heart of Dukezong's nightlife.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-3">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 text-lg font-bold">寺</span>
+              <h3 class="text-base font-bold text-slate-900">Dongzhulin Monastery</h3>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-500">Built in 1667, Dongzhulin (东竹林寺) is one of the 13 great monasteries of the Gelug school of Tibetan Buddhism. Located in Benzilan town, about 100 km from Shangri-La on the road to Meili Snow Mountain, it houses priceless thangkas, sculptures, and a three-story golden Buddha statue. Unlike Songzanlin, Dongzhulin sees very few tourists — the chanting hall still feels like a living monastery, not a museum.</p>
+            <div class="mt-3 flex items-center justify-between rounded-lg bg-white px-3 py-2">
+              <span class="text-xs text-slate-400">Entry</span>
+              <span class="text-sm font-semibold text-slate-700">Free / donation</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-400"><strong>Tip:</strong> Stop here en route to Meili Snow Mountain. The monastery is 30 minutes before Benzilan, the halfway rest town for the Shangri-La–Deqin drive.</p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600 text-lg font-bold">塔</span>
+              <h3 class="text-base font-bold text-slate-900">Tower in Tower</h3>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-500">The Shangri-La Tower in Tower (塔中塔) is the only structure of its kind in China — a smaller golden pagoda completely enclosed within a larger white stupa. Built in 2013 on the site of an ancient Tibetan stupa, it stands in the center of a traffic roundabout near the old town entrance. The inner pagoda contains Buddhist relics, while the outer stupa has prayer wheels around its base that locals spin as they circumambulate.</p>
+            <div class="mt-3 flex items-center justify-between rounded-lg bg-white px-3 py-2">
+              <span class="text-xs text-slate-400">Entry</span>
+              <span class="text-sm font-semibold text-slate-700">Free</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-400"><strong>Tip:</strong> Visit at dusk when the golden inner pagoda is illuminated. It is a 10-minute walk from Dukezong's north gate. Join locals in walking clockwise around the base.</p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 text-lg font-bold">街</span>
+              <h3 class="text-base font-bold text-slate-900">Sifang Street Square</h3>
+            </div>
+            <p class="text-sm leading-relaxed text-slate-500">Sifang Street (四方街) is the central plaza of Dukezong Old Town and the traditional gathering place for Shangri-La's Tibetan community. By day, it is a marketplace with yak jerky vendors and souvenir stalls. After sunset — usually around 7:30 PM — the square transforms. Locals of all ages gather for traditional Tibetan circle dancing (锅庄舞). Everyone is welcome to join — no experience needed, just follow the rhythm.</p>
+            <div class="mt-3 flex items-center justify-between rounded-lg bg-white px-3 py-2">
+              <span class="text-xs text-slate-400">Best time</span>
+              <span class="text-sm font-semibold text-slate-700">Evening (7:30 PM+)</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-400"><strong>Tip:</strong> Grab a yak yogurt from a nearby stall, sit on the perimeter steps, and watch the dancing before you join in. The square is ringed by excellent momo (Tibetan dumpling) shops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== FAQ ===== -->
     <section id="faq" class="bg-slate-50 py-20 sm:py-28">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -877,13 +969,13 @@ const navSections = [
 
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { name: "Lijiang", image: "lijiang-old-town.webp", dist: "3.5 hrs by car", desc: "UNESCO World Heritage old town with canals, Jade Dragon Snow Mountain, and Naxi minority culture." },
-            { name: "Dali", image: "dali-erhai-lake.webp", dist: "6 hrs by car", desc: "Erhai Lake, Cangshan Mountain, and the ancient Dali Kingdom capital. Laid-back backpacker hub with great cafes." },
-            { name: "Daocheng Yading", image: "daocheng-yading.webp", dist: "5 hrs by car", desc: "Sichuan's spectacular nature reserve with three sacred snow mountains. Often paired with Shangri-La on extended trips." },
-            { name: "Yubeng Village", image: "yubeng-village.webp", dist: "4 hrs + 5 hr trek", desc: "Remote Tibetan village at the foot of Meili Snow Mountain. No roads, accessible only by hiking. The ultimate Shangri-La experience for trekkers." },
+            { name: "Lijiang", image: "lijiang-old-town.webp", dist: "3.5 hrs by car", alt: "Lijiang UNESCO World Heritage old town with ancient canals stone bridges and Jade Dragon Snow Mountain in background Yunnan China", desc: "UNESCO World Heritage old town with canals, Jade Dragon Snow Mountain, and Naxi minority culture." },
+            { name: "Dali", image: "dali-erhai-lake.webp", dist: "6 hrs by car", alt: "Dali ancient town with Erhai Lake turquoise water Cangshan Mountain and traditional Bai architecture in Yunnan China", desc: "Erhai Lake, Cangshan Mountain, and the ancient Dali Kingdom capital. Laid-back backpacker hub with great cafes." },
+            { name: "Daocheng Yading", image: "daocheng-yading.webp", dist: "5 hrs by car", alt: "Daocheng Yading nature reserve with three sacred snow mountains and turquoise alpine lake in autumn colors Sichuan China", desc: "Sichuan's spectacular nature reserve with three sacred snow mountains. Often paired with Shangri-La on extended trips." },
+            { name: "Yubeng Village", image: "yubeng-village.webp", dist: "4 hrs + 5 hr trek", alt: "Remote Yubeng Village traditional Tibetan houses at foot of Meili Snow Mountain accessible only by hiking Yunnan China", desc: "Remote Tibetan village at the foot of Meili Snow Mountain. No roads, accessible only by hiking. The ultimate Shangri-La experience for trekkers." },
           ].map(dest => (
             <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-4">
-              <img src={`/images/${dest.image}`} alt={`${dest.name} near Shangri-La Yunnan`} class="w-full h-24 rounded-lg mb-3 object-cover" width="400" height="96" loading="lazy" />
+              <img src={`/images/${dest.image}`} alt={dest.alt || `${dest.name} near Shangri-La Yunnan`} class="w-full h-24 rounded-lg mb-3 object-cover" width="400" height="96" loading="lazy" />
               <p class="text-sm font-bold text-slate-900">{dest.name}</p>
               <p class="mt-0.5 text-xs font-medium text-slate-400">{dest.dist}</p>
               <p class="mt-2 text-sm leading-relaxed text-slate-500">{dest.desc}</p>
@@ -908,6 +1000,64 @@ const navSections = [
         <a href="https://www.tripadvisor.com/Tourism-g303773-Shangri_La_Yunnan-Vacations.html" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">TripAdvisor — Shangri-La</a>
       </div>
       <p class="mt-4 text-xs text-slate-400">All ticket prices, transport schedules, and practical information verified first-hand as of August 2026.</p>
+    </div>
+  </section>
+
+  <!-- ===== INTERNAL LINK MATRIX ===== -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Explore More</p>
+      <h2 class="mt-2 text-2xl font-bold tracking-tight text-slate-900">Everything on This Page</h2>
+      <div class="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="#explore" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">📍</span> Attractions
+        </a>
+        <a href="#wildlife" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🐒</span> Snub-Nosed Monkey
+        </a>
+        <a href="#vs-tibet" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">⚖️</span> Shangri-La vs Tibet
+        </a>
+        <a href="#plan" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🗺️</span> Itineraries
+        </a>
+        <a href="#weather" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🌤️</span> Weather by Month
+        </a>
+        <a href="#altitude" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🏔️</span> Altitude Guide
+        </a>
+        <a href="#stay" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🏨</span> Where to Stay
+        </a>
+        <a href="#transport" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🚌</span> Transportation
+        </a>
+        <a href="#costs" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">💰</span> Travel Costs
+        </a>
+        <a href="#china-entry" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🇨🇳</span> China Starter Kit
+        </a>
+        <a href="#food" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🍲</span> Food & Culture
+        </a>
+        <a href="#tips" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">💡</span> Travel Tips
+        </a>
+        <a href="#solo" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">🧭</span> Solo Travel
+        </a>
+        <a href="#hidden-gems" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">💎</span> Hidden Gems
+        </a>
+        <a href="#faq" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">❓</span> FAQ
+        </a>
+        <a href="/about" class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+          <span class="text-emerald-600 text-xs">📖</span> About Us
+        </a>
+      </div>
     </div>
   </section>
 

@@ -24,13 +24,27 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://shangri-la-yunnan.com/og-image.png" />
+  <meta property="og:image" content="https://shangri-la-yunnan.com/og-image.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://shangri-la-yunnan.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://shangri-la-yunnan.com/og-image.png" />
+  <meta name="twitter:image" content="https://shangri-la-yunnan.com/og-image.webp" />
   {!noindex && <link rel="canonical" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />}
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://shangri-la-yunnan.com"
+    }]
+  }
+  </script>
 
   <!-- Organization + WebSite Schema -->
   <script type="application/ld+json">
@@ -40,7 +54,12 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
     "name": "Shangri-La Guide",
     "url": "https://shangri-la-yunnan.com",
     "description": "Complete Shangri-La Yunnan travel guide and destination hub.",
-    "logo": "https://shangri-la-yunnan.com/favicon.svg"
+    "logo": "https://shangri-la-yunnan.com/favicon.svg",
+    "sameAs": [
+      "https://www.tripadvisor.com/Tourism-g303773-Shangri_La_Yunnan-Vacations.html",
+      "https://www.wikidata.org/wiki/Q1207070",
+      "https://en.wikipedia.org/wiki/Shangri-La,_Yunnan"
+    ]
   }
   </script>
   <script type="application/ld+json">
