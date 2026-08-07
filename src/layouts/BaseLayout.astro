@@ -30,7 +30,7 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta property="og:url" content="https://shangri-la-yunnan.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://shangri-la-yunnan.com/og-image.webp" />
-  {!noindex && <link rel="canonical" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />}
+  {!noindex && <link rel="canonical" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`.replace(/\/$/, '') || 'https://shangri-la-yunnan.com'} />}
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
