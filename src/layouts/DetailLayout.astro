@@ -12,12 +12,12 @@ export interface Props {
 const { title, description, category, image, schema } = Astro.props;
 const schemaJson = JSON.stringify(schema);
 const breadcrumbName = category === "Attraction" ? "Attractions" : "Food & Culture";
-const breadcrumbUrl = "https://shangri-la-yunnan.com/" + (category === "Attraction" ? "#explore" : "#food");
+const breadcrumbUrl = "https://www.shangri-la-yunnan.com/" + (category === "Attraction" ? "#explore" : "#food");
 const breadcrumbJson = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shangri-la-yunnan.com/" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.shangri-la-yunnan.com/" },
     { "@type": "ListItem", "position": 2, "name": breadcrumbName, "item": breadcrumbUrl },
     { "@type": "ListItem", "position": 3, "name": title }
   ]
@@ -43,16 +43,16 @@ const breadcrumbJson = JSON.stringify({
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="canonical" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />
-  <link rel="alternate" hreflang="x-default" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />
+  <link rel="canonical" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
+  <link rel="alternate" hreflang="x-default" href={`https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
 
   <meta property="og:title" content={`${title} | Shangri-La Yunnan`} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content={`https://shangri-la-yunnan.com/images/${image}`} />
+  <meta property="og:image" content={`https://www.shangri-la-yunnan.com/images/${image}`} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />
+  <meta property="og:url" content={`https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
   <meta name="twitter:card" content="summary_large_image" />
 
   <script type="application/ld+json" set:html={schemaJson}></script>

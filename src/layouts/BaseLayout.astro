@@ -22,7 +22,7 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta name="description" content={description} />
   <meta name="datePublished" content="2024-01-01" />
   <meta name="dateModified" content="2026-08-05" />
-  <link rel="alternate" hreflang="x-default" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`} />
+  <link rel="alternate" hreflang="x-default" href={`https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -32,13 +32,13 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://shangri-la-yunnan.com/og-image.webp" />
+  <meta property="og:image" content="https://www.shangri-la-yunnan.com/og-image.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://shangri-la-yunnan.com/" />
+  <meta property="og:url" content="https://www.shangri-la-yunnan.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://shangri-la-yunnan.com/og-image.webp" />
-  {!noindex && <link rel="canonical" href={`https://shangri-la-yunnan.com${Astro.url.pathname}`.replace(/\/$/, '') || 'https://shangri-la-yunnan.com'} />}
+  <meta name="twitter:image" content="https://www.shangri-la-yunnan.com/og-image.webp" />
+  {!noindex && <link rel="canonical" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />}
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
@@ -49,7 +49,7 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://shangri-la-yunnan.com"
+      "item": "https://www.shangri-la-yunnan.com"
     }]
   }
   </script>
@@ -60,9 +60,9 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Shangri-La Guide",
-    "url": "https://shangri-la-yunnan.com",
+    "url": "https://www.shangri-la-yunnan.com",
     "description": "Complete Shangri-La Yunnan travel guide and destination hub.",
-    "logo": "https://shangri-la-yunnan.com/favicon.svg",
+    "logo": "https://www.shangri-la-yunnan.com/favicon.svg",
     "sameAs": [
       "https://www.tripadvisor.com/Tourism-g303773-Shangri_La_Yunnan-Vacations.html",
       "https://www.wikidata.org/wiki/Q1207070",
@@ -75,7 +75,7 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Shangri-La Guide",
-    "url": "https://shangri-la-yunnan.com"
+    "url": "https://www.shangri-la-yunnan.com"
   }
   </script>
 

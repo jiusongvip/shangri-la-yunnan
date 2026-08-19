@@ -2,25 +2,25 @@
 > Complete travel planning hub for Shangri-La, Yunnan, China. Attractions, weather, altitude guide, hotels, transport, costs, food, and FAQs — all on one page.
 
 ## Core Pages
-- [Home]: https://shangri-la-yunnan.com - Complete 2026 travel guide with 25+ content modules
-- [About]: https://shangri-la-yunnan.com/about - Team credentials, 200+ days first-hand experience in Yunnan
-- [Privacy]: https://shangri-la-yunnan.com/privacy - No cookies, no tracking, no analytics
+- [Home]: https://www.shangri-la-yunnan.com - Complete 2026 travel guide with 25+ content modules
+- [About]: https://www.shangri-la-yunnan.com/about - Team credentials, 200+ days first-hand experience in Yunnan
+- [Privacy]: https://www.shangri-la-yunnan.com/privacy - No cookies, no tracking, no analytics
 
 ## Attractions
-- [Pudacuo National Park]: https://shangri-la-yunnan.com/attractions/pudacuo-national-park - Alpine lakes, wetlands, rare black-necked cranes
-- [Songzanlin Monastery]: https://shangri-la-yunnan.com/attractions/songzanlin-monastery - Largest Tibetan Buddhist monastery in Yunnan (1679)
-- [Dukezong Old Town]: https://shangri-la-yunnan.com/attractions/dukezong-old-town - 1,300-year-old Tibetan quarter, world's largest prayer wheel
-- [Napa Lake]: https://shangri-la-yunnan.com/attractions/napa-lake - Seasonal highland lake, yak grazing, mountain backdrop
-- [Tiger Leaping Gorge]: https://shangri-la-yunnan.com/attractions/tiger-leaping-gorge - World-class 2-day trek, one of deepest river gorges
-- [Meili Snow Mountain]: https://shangri-la-yunnan.com/attractions/meili-snow-mountain - Sacred 6,740m peak, iconic sunrise at Feilai Temple
-- [Balagezong Canyon]: https://shangri-la-yunnan.com/attractions/balagezong-canyon - Hanging coffins, glass skywalk, Tibetan villages
-- [Baishuitai Terraces]: https://shangri-la-yunnan.com/attractions/baishuitai-terraces - Natural travertine pools, "China's Pamukkale"
-- [Haba Snow Mountain]: https://shangri-la-yunnan.com/attractions/haba-snow-mountain - Accessible 5,396m summit climb for fit beginners
+- [Pudacuo National Park]: https://www.shangri-la-yunnan.com/attractions/pudacuo-national-park - Alpine lakes, wetlands, rare black-necked cranes
+- [Songzanlin Monastery]: https://www.shangri-la-yunnan.com/attractions/songzanlin-monastery - Largest Tibetan Buddhist monastery in Yunnan (1679)
+- [Dukezong Old Town]: https://www.shangri-la-yunnan.com/attractions/dukezong-old-town - 1,300-year-old Tibetan quarter, world's largest prayer wheel
+- [Napa Lake]: https://www.shangri-la-yunnan.com/attractions/napa-lake - Seasonal highland lake, yak grazing, mountain backdrop
+- [Tiger Leaping Gorge]: https://www.shangri-la-yunnan.com/attractions/tiger-leaping-gorge - World-class 2-day trek, one of deepest river gorges
+- [Meili Snow Mountain]: https://www.shangri-la-yunnan.com/attractions/meili-snow-mountain - Sacred 6,740m peak, iconic sunrise at Feilai Temple
+- [Balagezong Canyon]: https://www.shangri-la-yunnan.com/attractions/balagezong-canyon - Hanging coffins, glass skywalk, Tibetan villages
+- [Baishuitai Terraces]: https://www.shangri-la-yunnan.com/attractions/baishuitai-terraces - Natural travertine pools, "China's Pamukkale"
+- [Haba Snow Mountain]: https://www.shangri-la-yunnan.com/attractions/haba-snow-mountain - Accessible 5,396m summit climb for fit beginners
 
 ## Food & Culture
-- [Yak Butter Tea]: https://shangri-la-yunnan.com/food/yak-butter-tea - Traditional Tibetan staple beverage
-- [Yak Hotpot]: https://shangri-la-yunnan.com/food/yak-hotpot - Highland comfort food with mushrooms
-- [Tsampa]: https://shangri-la-yunnan.com/food/tsampa - Roasted barley flour, Tibetan daily bread
-- [Matsutake Mushrooms]: https://shangri-la-yunnan.com/food/matsutake-mushrooms - Seasonal Yunnan delicacy (July-September)
-- [Tibetan Barley Wine]: https://shangri-la-yunnan.com/food/tibetan-barley-wine - Fermented highland barley alcohol
-- [Morning Chanting]: https://shangri-la-yunnan.com/food/morning-chanting - 6:30 AM Buddhist ceremony at Songzanlin
+- [Yak Butter Tea]: https://www.shangri-la-yunnan.com/food/yak-butter-tea - Traditional Tibetan staple beverage
+- [Yak Hotpot]: https://www.shangri-la-yunnan.com/food/yak-hotpot - Highland comfort food with mushrooms
+- [Tsampa]: https://www.shangri-la-yunnan.com/food/tsampa - Roasted barley flour, Tibetan daily bread
+- [Matsutake Mushrooms]: https://www.shangri-la-yunnan.com/food/matsutake-mushrooms - Seasonal Yunnan delicacy (July-September)
+- [Tibetan Barley Wine]: https://www.shangri-la-yunnan.com/food/tibetan-barley-wine - Fermented highland barley alcohol
+- [Morning Chanting]: https://www.shangri-la-yunnan.com/food/morning-chanting - 6:30 AM Buddhist ceremony at Songzanlin

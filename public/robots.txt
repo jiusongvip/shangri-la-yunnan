@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://shangri-la-yunnan.com/sitemap.xml
+Sitemap: https://www.shangri-la-yunnan.com/sitemap.xml
 
 User-agent: GPTBot
 Allow: /
