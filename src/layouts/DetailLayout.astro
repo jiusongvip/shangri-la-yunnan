@@ -45,12 +45,16 @@ const breadcrumbJson = JSON.stringify({
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-EJQL3P8NDE');
-    window.addEventListener('load', function(){
+    function injectGtag(){
+      if (window.__gtagInjected) return;
+      window.__gtagInjected = true;
       var s = document.createElement('script');
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EJQL3P8NDE';
       document.head.appendChild(s);
-    });
+    }
+    ['pointerdown','keydown','touchstart'].forEach(function(ev){ window.addEventListener(ev, injectGtag, { once: true, passive: true }); });
+    window.addEventListener('load', function(){ setTimeout(injectGtag, 6000); });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
