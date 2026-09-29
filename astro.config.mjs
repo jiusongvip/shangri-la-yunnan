@@ -18,5 +18,6 @@ export default defineConfig({
     }),
   ],
   trailingSlash: "always",
+  build: { inlineStylesheets: "always" },
   server: { port: 4321 },
 });
