@@ -44,7 +44,7 @@ const breadcrumbJson = JSON.stringify({
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="canonical" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
-  <link rel="alternate" hreflang="x-default" href={`https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
+  <link rel="alternate" hreflang="x-default" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
 
   <meta property="og:title" content={`${title} | Shangri-La Yunnan`} />
   <meta property="og:description" content={description} />
@@ -54,6 +54,9 @@ const breadcrumbJson = JSON.stringify({
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content={`https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | Shangri-La Yunnan`} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`https://www.shangri-la-yunnan.com/images/${image}`} />
 
   <script type="application/ld+json" set:html={schemaJson}></script>
 

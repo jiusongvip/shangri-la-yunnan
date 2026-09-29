@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 
-const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your Shangri-La Yunnan trip in one place. Top attractions, trip planner, altitude guide, hotel and budget tips.", noindex = false } = Astro.props;
+const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your Shangri-La Yunnan trip in one place. Top attractions, trip planner, altitude guide, hotel and budget tips.", noindex = false, preloadImage = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +22,7 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta name="description" content={description} />
   <meta name="datePublished" content="2024-01-01" />
   <meta name="dateModified" content="2026-08-05" />
-  <link rel="alternate" hreflang="x-default" href={`https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
+  <link rel="alternate" hreflang="x-default" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -37,7 +37,10 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://www.shangri-la-yunnan.com/" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://www.shangri-la-yunnan.com/og-image.webp" />
+  {preloadImage && <link rel="preload" href={preloadImage} as="image" fetchpriority="high" />}
   {!noindex && <link rel="canonical" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />}
 
   <!-- BreadcrumbList Schema -->
