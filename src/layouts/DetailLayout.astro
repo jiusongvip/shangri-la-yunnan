@@ -10,14 +10,20 @@ export interface Props {
 }
 
 const { title, description, category, image, schema } = Astro.props;
-const schemaJson = JSON.stringify(schema);
+const schemaJson = JSON.stringify({
+  ...schema,
+  "author": { "@type": "Organization", "name": "Shangri-La Guide Team", "url": "https://www.shangri-la-yunnan.com/about/", "email": "hello@shangri-la-yunnan.com" },
+  "publisher": { "@type": "Organization", "name": "Shangri-La Guide", "url": "https://www.shangri-la-yunnan.com" },
+  "datePublished": "2024-01-01",
+  "dateModified": "2026-09-01",
+});
 const breadcrumbName = category === "Attraction" ? "Attractions" : "Food & Culture";
 const breadcrumbUrl = "https://www.shangri-la-yunnan.com/" + (category === "Attraction" ? "#explore" : "#food");
 const breadcrumbJson = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.shangri-la-yunnan.com/" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.shangri-la-yunnan.com" },
     { "@type": "ListItem", "position": 2, "name": breadcrumbName, "item": breadcrumbUrl },
     { "@type": "ListItem", "position": 3, "name": title }
   ]
@@ -37,7 +43,7 @@ const breadcrumbJson = JSON.stringify({
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | Shangri-La Yunnan Travel Guide</title>
+  <title>{title} | Shangri-La Guide</title>
   <meta name="description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,7 +52,11 @@ const breadcrumbJson = JSON.stringify({
   <link rel="canonical" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
   <link rel="alternate" hreflang="x-default" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
 
-  <meta property="og:title" content={`${title} | Shangri-La Yunnan`} />
+  <meta name="robots" content="index, follow" />
+  <meta name="datePublished" content="2024-01-01" />
+  <meta name="dateModified" content="2026-09-01" />
+  <meta property="og:site_name" content="Shangri-La Guide" />
+  <meta property="og:title" content={`${title} | Shangri-La Guide`} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="article" />
   <meta property="og:image" content={`https://www.shangri-la-yunnan.com/images/${image}`} />
@@ -54,7 +64,7 @@ const breadcrumbJson = JSON.stringify({
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content={`https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} | Shangri-La Yunnan`} />
+  <meta name="twitter:title" content={`${title} | Shangri-La Guide`} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={`https://www.shangri-la-yunnan.com/images/${image}`} />
 

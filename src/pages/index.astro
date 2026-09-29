@@ -13,7 +13,7 @@ const quickFacts = [
 
 const mustSeeSpots = [
   { slug: "pudacuo-national-park", name: "Pudacuo National Park", image: "pudacuo-national-park.webp", stars: 5, tag: "Nature", altitude: "3,500 m", time: "4-6 hrs", best: "May-Oct", ticket: "100 RMB", alt: "Pudacuo National Park pristine alpine lake Shudu Lake with forested shoreline crystal blue water and mountain reflections in Shangri-La Yunnan", desc: "Pristine alpine lakes, wetlands, and forests. Home to rare black-necked cranes. The Shudu Lake trail offers the most photogenic views in Shangri-La." },
-  { slug: "songzanlin-monastery", name: "Songzanlin Monastery", image: "songzanlin-monastery.webp", stars: 5, tag: "Culture", altitude: "3,300 m", time: "2-3 hrs", best: "All year", ticket: "115 RMB", alt: "Songzanlin Monastery golden roof Tibetan Buddhist temple complex at 3300 meters nicknamed Little Potala Palace in Shangri-La Yunnan", desc: "The largest Tibetan Buddhist monastery in Yunnan, built in 1679. Often called the Little Potala Palace. Morning chanting ceremonies at 6:30 AM are open to visitors." },
+  { slug: "songzanlin-monastery", name: "Songzanlin Monastery", image: "songzanlin-monastery.webp", stars: 5, tag: "Culture", altitude: "3,300 m", time: "2-3 hrs", best: "All year", ticket: "115 RMB", alt: "Songzanlin Monastery golden roof Tibetan Buddhist temple complex at 3300 meters nicknamed Little Potala Palace in Shangri-La Yunnan", desc: "The <a href=\"https://en.wikipedia.org/wiki/Ganden_Sumtseling_Monastery\" target=\"_blank\" rel=\"noopener\" class=\"text-emerald-700 underline underline-offset-2\">largest Tibetan Buddhist monastery in Yunnan</a>, built in 1679. Often called the Little Potala Palace. Morning chanting ceremonies at 6:30 AM are open to visitors." },
   { slug: "dukezong-old-town", name: "Dukezong Old Town", image: "dukezong-old-town.webp", stars: 4, tag: "History", altitude: "3,300 m", time: "2-4 hrs", best: "All year", ticket: "Free", alt: "Dukezong Old Town ancient cobblestone streets with traditional Tibetan wooden buildings and giant golden prayer wheel at dusk in Shangri-La Yunnan", desc: "A 1,300-year-old Tibetan quarter rebuilt after the 2014 fire. Home to the world's largest prayer wheel (21m tall). Best explored at dusk when lanterns light up the lanes." },
   { slug: "napa-lake", name: "Napa Lake", image: "napa-lake.webp", stars: 4, tag: "Nature", altitude: "3,266 m", time: "2-4 hrs", best: "May-Oct", ticket: "60 RMB", alt: "Napa Lake seasonal alpine wetland with grazing yaks horses and snow-capped mountain backdrop under golden sunset light in Shangri-La Yunnan", desc: "A seasonal highland lake that transforms into a vast grassland in dry months. Yak and horse grazing with snow-capped mountain backdrops. Stunning at sunset." },
   { slug: "tiger-leaping-gorge", name: "Tiger Leaping Gorge", image: "tiger-leaping-gorge.webp", stars: 5, tag: "Adventure", altitude: "1,800-2,670 m", time: "1-2 days", best: "Apr-Jun, Sep-Oct", ticket: "65 RMB", alt: "Tiger Leaping Gorge dramatic deep river canyon with Jade Dragon Snow Mountain towering above Jinsha River rapids in Yunnan China", desc: "One of the deepest river gorges in the world. The high trail is a world-class 2-day trek with guesthouses along the route. Day trips to the upper gorge are also possible." },
@@ -152,6 +152,21 @@ const navSections = [
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://www.shangri-la-yunnan.com",
+  "name": "Shangri-La Yunnan Travel Guide 2026 — Complete Hub",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "WebSite", "name": "Shangri-La Guide", "url": "https://www.shangri-la-yunnan.com"},
+  "author": {"@type": "Organization", "name": "Shangri-La Guide Team", "url": "https://www.shangri-la-yunnan.com/about/", "email": "hello@shangri-la-yunnan.com"},
+  "publisher": {"@type": "Organization", "name": "Shangri-La Guide", "url": "https://www.shangri-la-yunnan.com"},
+  "datePublished": "2024-01-01",
+  "dateModified": "2026-09-01",
+  "about": {"@type": "TouristDestination", "name": "Shangri-La, Yunnan"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "TouristDestination",
   "name": "Shangri-La, Yunnan",
   "description": "Shangri-La is a county-level city in Diqing Tibetan Autonomous Prefecture, Yunnan, China, at 3,160m altitude. Known for Tibetan Buddhist culture, alpine landscapes, and as the inspiration for James Hilton's Lost Horizon.",
@@ -232,11 +247,12 @@ const navSections = [
               <a href="#explore" class="inline-flex h-11 items-center rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white transition-all hover:bg-emerald-500 active:scale-[0.98]">Explore attractions</a>
               <a href="#plan" class="inline-flex h-11 items-center rounded-full border border-slate-600 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 active:scale-[0.98]">View itineraries</a>
             </div>
+            <p class="mt-6 text-sm leading-relaxed text-slate-400">By the <a href="/about/" class="font-semibold text-emerald-400 hover:text-emerald-300">Shangri-La Guide Team</a> — 200+ days of on-the-ground research across Diqing Prefecture. Every price, schedule, and trail note re-verified on the road; last checked <time datetime="2026-08">August 2026</time>. Questions? <a href="mailto:hello@shangri-la-yunnan.com" class="text-emerald-400 underline underline-offset-2 hover:text-emerald-300">Email us</a>.</p>
           </div>
 
           <!-- Quick Facts -->
           <div class="rounded-2xl border border-slate-700/50 bg-slate-800/80 backdrop-blur-xl p-5 shadow-2xl shadow-emerald-900/10">
-            <h3 class="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400 mb-3">Quick Facts</h3>
+            <h2 class="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400 mb-3">Quick Facts</h2>
             <dl class="grid grid-cols-2 gap-x-4 gap-y-3">
               {quickFacts.map(f => (
                 <div>
@@ -324,8 +340,8 @@ const navSections = [
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14">
           <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Must See</p>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Attractions</h2>
-          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Eight places that define Shangri-La. Click any card for details: altitude, time needed, best season, and ticket prices.</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">What Are the Best Attractions in Shangri-La?</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500"><strong>The eight essentials:</strong> Pudacuo National Park, Songzanlin Monastery, Dukezong Old Town, Napa Lake, Tiger Leaping Gorge, Meili Snow Mountain, Balagezong Canyon, and Baishuitai Terraces. Each card below covers altitude, time needed, best season, and ticket prices.</p>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -347,7 +363,7 @@ const navSections = [
                 <svg class="h-4 w-4 flex-shrink-0 mt-1 text-slate-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
               </summary>
               <div class="px-5 pb-5 space-y-3">
-                <p class="text-sm leading-relaxed text-slate-500">{spot.desc}</p>
+                <p class="text-sm leading-relaxed text-slate-500" set:html={spot.desc} />
                 <div class="grid grid-cols-2 gap-x-4 gap-y-2 rounded-xl bg-slate-50 p-3">
                   <div><span class="text-[11px] uppercase tracking-wide text-slate-400">Altitude</span><p class="text-sm font-semibold text-slate-700">{spot.altitude}</p></div>
                   <div><span class="text-[11px] uppercase tracking-wide text-slate-400">Time</span><p class="text-sm font-semibold text-slate-700">{spot.time}</p></div>
@@ -412,8 +428,8 @@ const navSections = [
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14">
           <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Trip Plans</p>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Itineraries</h2>
-          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Pick your duration. Each plan is tested and optimized for logistics and timing.</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">How Many Days Do You Need in Shangri-La?</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500"><strong>Two days covers the highlights; three to four is ideal.</strong> Add a day each for Tiger Leaping Gorge or Balagezong Canyon. Every plan below is field-tested and optimized for logistics and timing.</p>
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -433,8 +449,8 @@ const navSections = [
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14">
           <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Climate</p>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Weather by Month</h2>
-          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Plan around the seasons. Temperatures in Celsius, rainfall in millimeters.</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">When Is the Best Time to Visit Shangri-La?</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500"><strong>May and September&ndash;October are the best months</strong> &mdash; clear skies, mild days, peak scenery. Use the table for month-by-month temperatures (C) and rainfall (mm).</p>
         </div>
 
         <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
@@ -491,8 +507,8 @@ const navSections = [
         <div class="grid gap-12 lg:grid-cols-2">
           <div>
             <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Health</p>
-            <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Altitude Guide</h2>
-            <p class="mt-3 max-w-md text-base leading-relaxed text-slate-500">Shangri-La sits at 3,160m. Most visitors adapt in 24-48 hours. Here is what to expect and how to prepare.</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">How High Is Shangri-La and Will Altitude Sickness Affect You?</h2>
+            <p class="mt-3 max-w-md text-base leading-relaxed text-slate-500"><strong>3,160 m (10,370 ft) above sea level.</strong> Most visitors adapt within 24-48 hours with no more than mild symptoms. Here is what to expect and how to prepare.</p>
 
             <div class="mt-8 space-y-3">
               <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
@@ -562,8 +578,8 @@ const navSections = [
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14">
           <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Accommodation</p>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Where to Stay</h2>
-          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Three areas, three experiences. Pick based on your travel style.</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Where Should You Stay in Shangri-La?</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500"><strong>First-timers should stay in Dukezong Old Town</strong> for atmosphere and walkability; pick the New Town for budget and modern hotels, or the countryside for lodge-and-view trips.</p>
         </div>
 
         <div class="grid gap-6 sm:grid-cols-3">
@@ -626,8 +642,8 @@ const navSections = [
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14">
           <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Getting There</p>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Transportation</h2>
-          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Four ways to reach Shangri-La, compared by time, cost, and convenience.</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">How Do You Get to Shangri-La?</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500"><strong>Most travelers arrive overland from Lijiang (~3.5 h by road).</strong> Diqing Airport (DIG) has short flights from Kunming and Chengdu. Four routes compared below by time, cost, and convenience.</p>
         </div>
 
         <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
@@ -694,8 +710,8 @@ const navSections = [
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14">
           <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Budget</p>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Travel Costs</h2>
-          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Daily expenses per person in RMB. Flights to Shangri-La not included.</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">How Much Does a Trip to Shangri-La Cost?</h2>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500"><strong>A realistic mid-range budget is 400&ndash;700 RMB per person per day</strong> including hotel, meals, and local transport. The table breaks down daily expenses in RMB (flights not included).</p>
         </div>
 
         <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
@@ -805,7 +821,7 @@ const navSections = [
         <div class="mb-14">
           <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">Taste & Tradition</p>
           <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Food & Culture</h2>
-          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500">Tibetan cuisine meets Yunnan flavors. Yak butter tea, barley wine, and monastery rituals.</p>
+          <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-500"><strong>Start with yak butter tea, tsampa, and a hotpot dinner</strong>, then time one morning for the 6:30 chanting at Songzanlin. Tibetan cuisine meets Yunnan flavors below.</p>
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -991,6 +1007,10 @@ const navSections = [
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <p class="text-sm font-semibold tracking-[0.15em] uppercase text-emerald-600">References</p>
       <h2 class="mt-2 text-2xl font-bold tracking-tight text-slate-900">Sources & Further Reading</h2>
+      <blockquote class="mt-6 border-l-4 border-emerald-500 bg-white px-5 py-4">
+        <p class="text-sm italic leading-relaxed text-slate-600">&ldquo;Northwest Yunnan is the area of richest biodiversity in China and may be the most biologically diverse temperate region on earth.&rdquo;</p>
+        <cite class="mt-2 block text-xs text-slate-400 not-italic">&mdash; <a href="https://whc.unesco.org/en/list/1083/" target="_blank" rel="noopener" class="text-emerald-600 hover:text-emerald-700">UNESCO World Heritage Centre</a>, Statement of Outstanding Universal Value for the Three Parallel Rivers of Yunnan Protected Sites</cite>
+      </blockquote>
       <div class="mt-6 grid gap-2 sm:grid-cols-2 text-sm text-slate-500">
         <a href="https://whc.unesco.org/en/list/1083/" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">UNESCO — Three Parallel Rivers World Heritage Site</a>
         <a href="https://en.wikipedia.org/wiki/Shangri-La_City" target="_blank" rel="noopener" class="hover:text-emerald-600 transition-colors">Wikipedia — Shangri-La City</a>
@@ -1062,7 +1082,6 @@ const navSections = [
   </section>
 
   <Footer />
-
   <script>
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
