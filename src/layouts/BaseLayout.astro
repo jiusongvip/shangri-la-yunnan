@@ -1,19 +1,30 @@
 ---
 import "../styles/global.css";
+import "@fontsource/outfit/300.css";
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/600.css";
+import "@fontsource/outfit/700.css";
+import "@fontsource/outfit/800.css";
 
-const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your Shangri-La Yunnan trip in one place. Top attractions, trip planner, altitude guide, hotel and budget tips.", noindex = false, preloadImage = "" } = Astro.props;
+const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your Shangri-La Yunnan trip in one place. Top attractions, trip planner, altitude guide, hotel and budget tips.", noindex = false, preloadImage = "", preloadImageSrcset = "", preloadImageSizes = "100vw" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJQL3P8NDE"></script>
-  <script>
+  <!-- Google tag (gtag.js) — injected after page load to keep it off the critical path -->
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-EJQL3P8NDE');
+    window.addEventListener('load', function(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EJQL3P8NDE';
+      document.head.appendChild(s);
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,9 +34,6 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta name="datePublished" content="2024-01-01" />
   <meta name="dateModified" content="2026-08-05" />
   <link rel="alternate" hreflang="x-default" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Open Graph -->
@@ -41,7 +49,9 @@ const { title = "Shangri-La Yunnan — Travel Guide", description = "Plan your S
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://www.shangri-la-yunnan.com/og-image.webp" />
-  {preloadImage && <link rel="preload" href={preloadImage} as="image" fetchpriority="high" />}
+  {preloadImage && (preloadImageSrcset
+    ? <link rel="preload" as="image" fetchpriority="high" href={preloadImage} imagesrcset={preloadImageSrcset} imagesizes={preloadImageSizes} />
+    : <link rel="preload" href={preloadImage} as="image" fetchpriority="high" />)}
   {!noindex && <link rel="canonical" href={Astro.url.pathname === "/" ? "https://www.shangri-la-yunnan.com" : `https://www.shangri-la-yunnan.com${Astro.url.pathname}`} />}
 
   <!-- BreadcrumbList Schema -->
